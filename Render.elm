@@ -9,7 +9,6 @@ import Element.Border
 import Element.Font as Font
 import Element.Input
 import Element.Region
-import Form
 import Html.Attributes
 import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes as Attr exposing (css)
@@ -64,19 +63,45 @@ engine =
                     div
                         [ css
                             [ Tw.flex
+                            , Tw.space_x_12
+                            , Tw.items_center
                             , Tw.flex_wrap
-                            , Tw.place_content_evenly
-                            , Tw.space_x_1
+                            , Bp.md [ Tw.flex_nowrap ]
                             ]
                         ]
                         (renderAll model
                             children
                         )
                 )
+            , Markdown.Html.tag "div"
+                (\children model ->
+                    div [ css [] ] (renderAll model children)
+                )
             , Markdown.Html.tag "image"
-                (\src desc children model ->
+                (\src desc size children model ->
+                    let
+                        size_ =
+                            case size of
+                                Just "xs" ->
+                                    Tw.max_w_xs
+
+                                Just "sm" ->
+                                    Tw.max_w_sm
+
+                                Just "md" ->
+                                    Tw.max_w_md
+
+                                Just "lg" ->
+                                    Tw.max_w_lg
+
+                                Just "xl" ->
+                                    Tw.max_w_xl
+
+                                _ ->
+                                    Tw.max_w_xs
+                    in
                     img
-                        [ css [ Tw.object_scale_down, Tw.max_w_xs ]
+                        [ css [ Tw.object_scale_down, size_ ]
                         , Attr.src
                             src
                         , Attr.alt desc
@@ -85,10 +110,7 @@ engine =
                 )
                 |> Markdown.Html.withAttribute "src"
                 |> Markdown.Html.withAttribute "desc"
-            , Markdown.Html.tag "test"
-                (\_ model ->
-                    text model.test
-                )
+                |> Markdown.Html.withOptionalAttribute "size"
             ]
     , text = \children _ -> text children
     , codeSpan = \_ _ -> div [] []
