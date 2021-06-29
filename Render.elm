@@ -188,7 +188,7 @@ engine =
                 |> Markdown.Html.withAttribute "url"
                 |> Markdown.Html.withAttribute "label"
             , Markdown.Html.tag "quote"
-                (\span2 children model ->
+                (\name span2 link children model ->
                     div
                         [ css
                             [ Bp.md
@@ -212,17 +212,30 @@ engine =
                             , Tw.justify_center
                             ]
                         ]
-                        (renderAll model
-                            children
-                        )
+                        [ div [ css [ Tw.space_y_1 ] ]
+                            (renderAll model
+                                children
+                                ++ [ div
+                                        [ css
+                                            [ Tw.text_right
+                                            , Tw.text_gray_500
+                                            , Tw.italic
+                                            ]
+                                        ]
+                                        [ text ("— " ++ name)
+                                        ]
+                                   ]
+                            )
+                        ]
                 )
+                |> Markdown.Html.withAttribute "name"
                 |> Markdown.Html.withOptionalAttribute "span2"
+                |> Markdown.Html.withOptionalAttribute "link"
             , Markdown.Html.tag "row"
                 (\children model ->
                     div
                         [ css
                             [ Tw.flex
-                            , Tw.flex
                             , Tw.items_center
                             , Tw.justify_center
                             ]
@@ -329,33 +342,20 @@ engine =
                 |> Markdown.Html.withAttribute "group"
                 |> Markdown.Html.withAttribute "id"
             , Markdown.Html.tag "div"
-                (\bg space_y children model ->
+                (\bg space_y text_align children model ->
                     let
                         customCss =
-                            case bg of
-                                Just color ->
-                                    [ Tw.bg_gray_200
-                                    , Tw.py_1
-                                    , Bp.md [ Tw.bg_white ]
-                                    ]
-
-                                Nothing ->
-                                    []
-
-                        customCss2 =
-                            case space_y of
-                                Just _ ->
-                                    customCss ++ [ Tw.space_y_4 ]
-
-                                _ ->
-                                    customCss
+                            (bg |> textToCss)
+                                ++ (space_y |> textToCss)
+                                ++ (text_align |> textToCss)
                     in
                     div
-                        [ css customCss2 ]
+                        [ css customCss ]
                         (renderAll model children)
                 )
                 |> Markdown.Html.withOptionalAttribute "bg"
                 |> Markdown.Html.withOptionalAttribute "space_y"
+                |> Markdown.Html.withOptionalAttribute "text_align"
             , Markdown.Html.tag "heading"
                 (\h left children model ->
                     let
@@ -392,7 +392,7 @@ engine =
                         "2" ->
                             h2
                                 [ css
-                                    ([ Tw.text_2xl
+                                    ([ Tw.text_3xl
                                      , Tw.mt_6
                                      , Tw.p_0
                                      ]
@@ -494,6 +494,7 @@ engine =
                             , Tw.w_3over4
                             , size_
                             , Tw.mx_auto
+                            , Tw.my_4
                             ]
                         , Attr.src
                             src
@@ -687,7 +688,7 @@ heading { level, rawText, children } model =
                 [ Attr.id (rawTextToId rawText)
                 , Attr.attribute "name" (rawTextToId rawText)
                 , css
-                    ([ Tw.text_2xl
+                    ([ Tw.text_3xl
                      , Tw.mt_6
                      ]
                         ++ commonCss
@@ -747,3 +748,25 @@ imageTw src desc =
         , Attr.alt desc
         ]
         []
+
+
+textToCss : Maybe String -> List Css.Style
+textToCss maybeColor =
+    case maybeColor of
+        Just "gray" ->
+            [ Tw.bg_gray_200
+            , Tw.py_1
+            , Bp.md [ Tw.bg_white ]
+            ]
+
+        Just "y_4" ->
+            [ Tw.space_y_4 ]
+
+        Just "text_left" ->
+            [ Tw.text_left ]
+
+        Just _ ->
+            []
+
+        Nothing ->
+            []
