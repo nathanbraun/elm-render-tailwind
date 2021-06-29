@@ -13,7 +13,7 @@ import Element.Region
 import Html.Attributes
 import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes as Attr exposing (css)
-import Html.Styled.Events exposing (onInput, onSubmit)
+import Html.Styled.Events exposing (onClick, onInput, onSubmit)
 import List.Extra as Extra
 import Markdown.Block as Block exposing (Block, Inline, ListItem(..), Task(..))
 import Markdown.Html
@@ -115,16 +115,17 @@ engine =
                             , Tw.mb_8
                             ]
                         ]
-                        [ button
-                            [ css
+                        [ a
+                            [ Attr.href url
+                            , css
                                 [ Tw.border_none
                                 , Tw.bg_white
                                 , Tw.text_lg
                                 , Tw.p_0
                                 ]
-                            , onSubmit (ShowGumroad "buy")
+                            , onClick (OpenCheckout "buy")
                             ]
-                            [ a [ Attr.href url ] [ text label ] ]
+                            [ text label ]
                         , span [ css [ Tw.hidden, Bp.md [ Tw.inline_flex ] ] ]
                             [ text " — " ]
                         , span [ css [ Tw.inline_flex ] ] [ text "30 day money back guarantee!" ]
@@ -145,19 +146,22 @@ engine =
                             , Tw.my_4
                             ]
                         ]
-                        [ button
-                            [ css
+                        [ a
+                            [ Attr.href url
+                            , css
                                 [ Tw.w_full
                                 , Tw.mt_3
+                                , Tw.no_underline
+                                , Tw.text_center
                                 , Bp.md [ Tw.mt_0 ]
                                 , Tw.px_5
                                 , Tw.py_3
                                 , Tw.text_base
                                 , Tw.font_medium
                                 , Tw.rounded_md
-                                , Tw.text_white
                                 , Tw.bg_blue_500
                                 , Tw.w_64
+                                , Tw.text_white
                                 , Css.focus
                                     [ Tw.outline_none
                                     , Tw.ring_2
@@ -168,20 +172,9 @@ engine =
                                     [ Tw.bg_blue_600
                                     ]
                                 ]
-                            , onSubmit (ShowGumroad "buy")
+                            , onClick (OpenCheckout "buy")
                             ]
-                            [ a
-                                [ Attr.href url
-                                , css
-                                    [ Tw.no_underline
-                                    , Tw.text_base
-                                    , Tw.font_medium
-                                    , Tw.rounded_md
-                                    , Tw.text_white
-                                    ]
-                                ]
-                                [ text label
-                                ]
+                            [ text label
                             ]
                         ]
                 )
