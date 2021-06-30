@@ -84,13 +84,17 @@ engine =
                     in
                     case ( version, test ) of
                         ( "A", Just A ) ->
-                            div []
+                            div [ css [ Tw.w_full ] ]
                                 (renderAll model
                                     children
                                 )
 
                         ( "B", Just B ) ->
-                            div []
+                            div
+                                [ css
+                                    [ Tw.w_full
+                                    ]
+                                ]
                                 (renderAll model
                                     children
                                 )
@@ -251,6 +255,22 @@ engine =
                             )
                         ]
                 )
+            , Markdown.Html.tag "img"
+                (\src desc children model ->
+                    img
+                        [ css
+                            [ Tw.object_scale_down
+                            , Bp.md [ Tw.max_w_sm ]
+                            , Tw.max_w_xs
+                            ]
+                        , Attr.src
+                            src
+                        , Attr.alt desc
+                        ]
+                        []
+                )
+                |> Markdown.Html.withAttribute "src"
+                |> Markdown.Html.withAttribute "desc"
             , Markdown.Html.tag "email"
                 (\group id children model ->
                     div
@@ -288,6 +308,7 @@ engine =
                                     , Tw.py_3
                                     , Tw.px_2
                                     , Tw.text_base
+                                    , Tw.max_w_xl
                                     , Css.focus
                                         [ Tw.ring_indigo_500
                                         , Tw.border_indigo_500
@@ -341,6 +362,7 @@ engine =
                             (bg |> textToCss)
                                 ++ (space_y |> textToCss)
                                 ++ (text_align |> textToCss)
+                                ++ []
                     in
                     div
                         [ css customCss ]
@@ -416,6 +438,7 @@ engine =
                                 [ Tw.grid_cols_4
                                 , Tw.gap_4
                                 , Tw.mt_8
+                                , Tw.max_w_screen_2xl
                                 ]
                             , Tw.gap_y_4
                             , Tw.my_8
@@ -442,7 +465,7 @@ engine =
                                     [ Tw.grid_cols_2
                                     , Tw.gap_x_4
                                     , Tw.gap_y_0
-                                    , Tw.mt_0
+                                    , Tw.my_6
                                     ]
                                 , Tw.mt_8
                                 , Tw.px_4
@@ -451,11 +474,7 @@ engine =
                                 , Tw.items_center
                                 ]
                             ]
-                            [ imageTw "images/pitch_speed_by_type.jpg" "scoring"
-                            , imageTw "images/pitch_spin_vs_speed.jpg" "scoring"
-                            , imageTw "images/n_per_inning.jpg" "scoring"
-                            , imageTw "images/runs_by_home_away.jpg" "scoring"
-                            ]
+                            (renderAll model children)
                         ]
                 )
             , Markdown.Html.tag "image"
@@ -484,7 +503,6 @@ engine =
                     img
                         [ css
                             [ Tw.object_scale_down
-                            , Tw.w_3over4
                             , size_
                             , Tw.mx_auto
                             , Tw.my_4
@@ -724,25 +742,6 @@ renderAll model =
     List.map ((|>) model)
 
 
-
--- image : String -> String ->
-
-
-imageTw : String -> String -> Html msg
-imageTw src desc =
-    img
-        [ css
-            [ Tw.object_scale_down
-            , Bp.md [ Tw.max_w_sm ]
-            , Tw.max_w_xs
-            ]
-        , Attr.src
-            src
-        , Attr.alt desc
-        ]
-        []
-
-
 textToCss : Maybe String -> List Css.Style
 textToCss maybeColor =
     case maybeColor of
@@ -763,3 +762,23 @@ textToCss maybeColor =
 
         Nothing ->
             []
+
+
+textToTW : String -> Css.Style
+textToTW string_ =
+    case string_ of
+        "bg_gray_200" ->
+            Tw.bg_gray_200
+
+        "space_y_4" ->
+            Tw.space_y_4
+
+        "text_left" ->
+            Tw.text_left
+
+        _ ->
+            Tw.transform_none
+
+
+
+-- TODO: fix this hack
