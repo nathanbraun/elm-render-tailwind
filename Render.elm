@@ -105,6 +105,56 @@ engine =
                 |> Markdown.Html.withAttribute "id"
                 |> Markdown.Html.withAttribute "version"
                 |> Markdown.Html.withAttribute "name"
+            , Markdown.Html.tag "extra"
+                (\children model ->
+                    div
+                        [ css
+                            [ Tw.px_2
+                            , Tw.flex
+                            , Tw.items_center
+                            , Tw.justify_center
+                            , Tw.flex_wrap
+                            , Bp.md [ Tw.space_x_1 ]
+                            , Tw.my_4
+                            ]
+                        ]
+                        [ button
+                            [ css
+                                [ Tw.w_full
+                                , Tw.mt_3
+                                , Tw.no_underline
+                                , Tw.text_center
+                                , Bp.md [ Tw.mt_0 ]
+                                , Tw.px_6
+                                , Tw.py_6
+                                , Tw.text_base
+                                , Tw.font_medium
+                                , Tw.rounded_md
+                                , Tw.bg_green_600
+                                , Tw.w_64
+                                , Tw.text_white
+                                , Tw.text_xl
+                                , Css.focus
+                                    [ Tw.outline_none
+                                    , Tw.ring_2
+                                    , Tw.ring_offset_2
+                                    , Tw.ring_blue_400
+                                    ]
+                                , Css.hover
+                                    [ Tw.bg_green_900
+                                    ]
+                                ]
+                            , onClick ToggleExtra
+                            ]
+                            [ case model.extraTestimonials of
+                                False ->
+                                    text "See more 👇"
+
+                                True ->
+                                    text "See less 👍"
+                            ]
+                        ]
+                )
             , Markdown.Html.tag "link"
                 (\url label children model ->
                     div
@@ -138,7 +188,7 @@ engine =
                 |> Markdown.Html.withAttribute "url"
                 |> Markdown.Html.withAttribute "label"
             , Markdown.Html.tag "button"
-                (\url label children model ->
+                (\url label extra children model ->
                     div
                         [ css
                             [ Tw.px_2
@@ -153,29 +203,41 @@ engine =
                         [ a
                             [ Attr.href url
                             , css
-                                [ Tw.w_full
-                                , Tw.mt_3
-                                , Tw.no_underline
-                                , Tw.text_center
-                                , Bp.md [ Tw.mt_0 ]
-                                , Tw.px_5
-                                , Tw.py_3
-                                , Tw.text_base
-                                , Tw.font_medium
-                                , Tw.rounded_md
-                                , Tw.bg_blue_500
-                                , Tw.w_64
-                                , Tw.text_white
-                                , Css.focus
+                                ([ Tw.w_full
+                                 , Tw.mt_3
+                                 , Tw.no_underline
+                                 , Tw.text_center
+                                 , Bp.md [ Tw.mt_0 ]
+                                 , Tw.px_4
+                                 , Tw.py_3
+                                 , Tw.text_base
+                                 , Tw.font_medium
+                                 , Tw.rounded_md
+                                 , Tw.bg_blue_500
+                                 , Tw.text_xl
+                                 , Tw.w_64
+                                 , Tw.text_white
+                                 , Css.focus
                                     [ Tw.outline_none
                                     , Tw.ring_2
                                     , Tw.ring_offset_2
                                     , Tw.ring_blue_400
                                     ]
-                                , Css.hover
+                                 , Css.hover
                                     [ Tw.bg_blue_600
                                     ]
-                                ]
+                                 ]
+                                    ++ (case ( extra, model.extraTestimonials ) of
+                                            ( Nothing, _ ) ->
+                                                []
+
+                                            ( _, True ) ->
+                                                []
+
+                                            ( Just _, False ) ->
+                                                [ Tw.hidden ]
+                                       )
+                                )
                             , onClick (OpenCheckout "buy")
                             ]
                             [ text label
@@ -184,12 +246,13 @@ engine =
                 )
                 |> Markdown.Html.withAttribute "url"
                 |> Markdown.Html.withAttribute "label"
+                |> Markdown.Html.withOptionalAttribute "extra"
             , Markdown.Html.tag "quote"
-                (\name span2 link children model ->
+                (\name span2 link extra children model ->
                     div
                         [ css
-                            [ Bp.md
-                                [ Tw.px_8
+                            ([ Bp.md
+                                [ Tw.px_6
                                 , Tw.py_6
                                 , case span2 of
                                     Just _ ->
@@ -198,16 +261,27 @@ engine =
                                     _ ->
                                         Tw.col_span_1
                                 ]
-                            , Tw.p_4
-                            , Tw.rounded_md
-                            , Tw.shadow_lg
-                            , Tw.border
-                            , Tw.border_solid
-                            , Tw.border_gray_400
-                            , Tw.flex
-                            , Tw.items_center
-                            , Tw.justify_center
-                            ]
+                             , Tw.p_4
+                             , Tw.rounded_md
+                             , Tw.shadow_lg
+                             , Tw.border
+                             , Tw.border_solid
+                             , Tw.border_gray_400
+                             , Tw.flex
+                             , Tw.items_center
+                             , Tw.justify_center
+                             ]
+                                ++ (case ( extra, model.extraTestimonials ) of
+                                        ( Nothing, _ ) ->
+                                            []
+
+                                        ( _, True ) ->
+                                            []
+
+                                        ( Just _, False ) ->
+                                            [ Tw.hidden ]
+                                   )
+                            )
                         ]
                         [ div [ css [ Tw.space_y_1 ] ]
                             (renderAll model
@@ -228,6 +302,7 @@ engine =
                 |> Markdown.Html.withAttribute "name"
                 |> Markdown.Html.withOptionalAttribute "span2"
                 |> Markdown.Html.withOptionalAttribute "link"
+                |> Markdown.Html.withOptionalAttribute "extra"
             , Markdown.Html.tag "row"
                 (\children model ->
                     div
