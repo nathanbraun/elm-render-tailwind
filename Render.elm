@@ -2232,62 +2232,7 @@ praise =
                         ]
                     ]
                 ]
-                [ svg
-                    [ SvgAttr.css
-                        [ Tw.absolute
-                        , Tw.top_full
-                        , Tw.right_full
-                        , Tw.transform
-                        , Tw.translate_x_1over3
-                        , Tw.neg_translate_y_1over4
-                        , Bp.lg
-                            [ Tw.translate_x_1over2
-                            ]
-                        , Bp.xl
-                            [ Tw.neg_translate_y_1over2
-                            ]
-                        ]
-                    , SvgAttr.width "404"
-                    , SvgAttr.height "404"
-                    , SvgAttr.fill "none"
-                    , SvgAttr.viewBox "0 0 404 404"
-                    , Attr.attribute "role" "img"
-                    , Attr.attribute "aria-labelledby" "svg-workcation"
-                    ]
-                    [ Svg.title
-                        [ SvgAttr.id "svg-workcation"
-                        ]
-                        [ text "Workcation" ]
-                    , Svg.defs []
-                        [ Svg.pattern
-                            [ SvgAttr.id "ad119f34-7694-4c31-947f-5c9d249b21f3"
-                            , SvgAttr.x "0"
-                            , SvgAttr.y "0"
-                            , SvgAttr.width "20"
-                            , SvgAttr.height "20"
-                            , SvgAttr.patternUnits "userSpaceOnUse"
-                            ]
-                            [ Svg.rect
-                                [ SvgAttr.x "0"
-                                , SvgAttr.y "0"
-                                , SvgAttr.width "4"
-                                , SvgAttr.height "4"
-                                , SvgAttr.css
-                                    [ Tw.text_gray_200
-                                    ]
-                                , SvgAttr.fill "currentColor"
-                                ]
-                                []
-                            ]
-                        ]
-                    , Svg.rect
-                        [ SvgAttr.width "404"
-                        , SvgAttr.height "404"
-                        , SvgAttr.fill "url(#ad119f34-7694-4c31-947f-5c9d249b21f3)"
-                        ]
-                        []
-                    ]
-                , div
+                [ div
                     [ css
                         [ Tw.relative
                         ]
