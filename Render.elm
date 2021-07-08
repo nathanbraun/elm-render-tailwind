@@ -166,9 +166,11 @@ engine =
                     praise
                 )
             , Markdown.Html.tag "feature"
-                (\children model ->
-                    feature model
+                (\group id children model ->
+                    feature group id model
                 )
+                |> Markdown.Html.withAttribute "group"
+                |> Markdown.Html.withAttribute "id"
             , Markdown.Html.tag "link"
                 (\url label children model ->
                     div
@@ -1789,15 +1791,8 @@ buy =
         ]
 
 
-feature : Model -> Html.Html Msg
-feature model =
-    let
-        id =
-            "main"
-
-        group =
-            "107409184"
-    in
+feature : String -> String -> Model -> Html.Html Msg
+feature group id model =
     div
         [ css
             [ Tw.overflow_hidden
@@ -2074,7 +2069,14 @@ feature model =
                             [ text "Ready to buy now?" ]
                         , span [ css [ Tw.hidden, Bp.md [ Tw.inline_flex ] ] ]
                             [ text " — " ]
-                        , span [ css [ Tw.inline_flex ] ] [ text "30 day money back guarantee!" ]
+                        , span
+                            [ css
+                                [ Tw.inline_flex
+                                , Tw.text_gray_700
+                                , Tw.font_semibold
+                                ]
+                            ]
+                            [ text "30 day money back guarantee!" ]
                         ]
                     ]
                 , div
@@ -2090,52 +2092,7 @@ feature model =
                         ]
                     , Attr.attribute "aria-hidden" "true"
                     ]
-                    [ svg
-                        [ SvgAttr.css
-                            [ Tw.absolute
-                            , Tw.left_1over2
-                            , Tw.transform
-                            , Tw.neg_translate_x_1over2
-                            , Tw.translate_y_16
-                            , Bp.lg
-                                [ Tw.hidden
-                                ]
-                            ]
-                        , SvgAttr.width "784"
-                        , SvgAttr.height "404"
-                        , SvgAttr.fill "none"
-                        , SvgAttr.viewBox "0 0 784 404"
-                        ]
-                        [ Svg.defs []
-                            [ Svg.pattern
-                                [ SvgAttr.id "ca9667ae-9f92-4be7-abcb-9e3d727f2941"
-                                , SvgAttr.x "0"
-                                , SvgAttr.y "0"
-                                , SvgAttr.width "20"
-                                , SvgAttr.height "20"
-                                , SvgAttr.patternUnits "userSpaceOnUse"
-                                ]
-                                [ Svg.rect
-                                    [ SvgAttr.x "0"
-                                    , SvgAttr.y "0"
-                                    , SvgAttr.width "4"
-                                    , SvgAttr.height "4"
-                                    , SvgAttr.css
-                                        [ Tw.text_gray_200
-                                        ]
-                                    , SvgAttr.fill "currentColor"
-                                    ]
-                                    []
-                                ]
-                            ]
-                        , Svg.rect
-                            [ SvgAttr.width "784"
-                            , SvgAttr.height "404"
-                            , SvgAttr.fill "url(#ca9667ae-9f92-4be7-abcb-9e3d727f2941)"
-                            ]
-                            []
-                        ]
-                    , img
+                    [ img
                         [ css
                             [ Tw.relative
                             , Tw.mx_auto
