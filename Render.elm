@@ -162,9 +162,14 @@ engine =
                     buy
                 )
             , Markdown.Html.tag "praise"
-                (\children model ->
-                    praise
+                (\quote name org logo headshot children model ->
+                    praise quote name org logo headshot
                 )
+                |> Markdown.Html.withAttribute "quote"
+                |> Markdown.Html.withAttribute "name"
+                |> Markdown.Html.withAttribute "org"
+                |> Markdown.Html.withOptionalAttribute "logo"
+                |> Markdown.Html.withAttribute "headshot"
             , Markdown.Html.tag "feature"
                 (\group id children model ->
                     feature group id model
@@ -1890,7 +1895,7 @@ feature group id model =
                         [ Bp.md [ Tw.text_2xl, Tw.max_w_3xl ]
                         , Tw.max_w_sm
                         , Tw.mt_4
-                        , Tw.text_xl
+                        , Tw.text_lg
                         , Tw.mx_auto
                         , Tw.text_center
                         , Tw.text_gray_500
@@ -1899,8 +1904,9 @@ feature group id model =
                     [ text "Python. Pandas. Web Scraping. Databases. SQL. Machine Learning. APIs." ]
                 , p
                     [ css
-                        [ Bp.md [ Tw.text_2xl, Tw.mt_0 ]
-                        , Tw.text_xl
+                        [ Bp.md [ Tw.text_2xl, Tw.mt_0, Tw.mb_0 ]
+                        , Tw.mb_10
+                        , Tw.text_lg
                         , Tw.max_w_2xl
                         , Tw.mx_auto
                         , Tw.text_center
@@ -1913,7 +1919,7 @@ feature group id model =
             , div
                 [ css
                     [ Tw.relative
-                    , Tw.mt_8
+                    , Tw.mt_0
                     , Tw.flex
                     , Tw.flex_wrap
                     , Tw.items_center
@@ -1925,7 +1931,9 @@ feature group id model =
                         [ Bp.lg
                             [ Tw.w_1over2
                             , Tw.order_1
+                            , Tw.mt_0
                             ]
+                        , Tw.mt_6
                         , Tw.mx_4
                         , Tw.order_2
                         , Tw.h_full
@@ -2081,12 +2089,13 @@ feature group id model =
                     ]
                 , div
                     [ css
-                        [ Tw.neg_mx_4
-                        , Tw.relative
+                        -- [ Tw.neg_mx_4
+                        [ Tw.relative
                         , Bp.lg
                             [ Tw.mt_0
                             , Tw.order_1
                             , Tw.mt_10
+                            , Tw.mb_6
                             ]
                         , Tw.mb_6
                         ]
@@ -2096,67 +2105,153 @@ feature group id model =
                         [ css
                             [ Tw.relative
                             , Tw.mx_auto
+                            , Tw.object_scale_down
+                            , Bp.md [ Tw.max_w_xs, Tw.w_auto ]
+                            , Tw.w_2over3
                             ]
-                        , Attr.width 350
                         , Attr.src "images/ltcwff_open_no_bg.png"
                         , Attr.alt ""
                         ]
                         []
                     ]
                 ]
-            , svg
-                [ SvgAttr.css
-                    [ Tw.hidden
-                    , Tw.absolute
-                    , Tw.right_full
-                    , Tw.transform
-                    , Tw.translate_x_1over2
-                    , Tw.translate_y_12
-                    , Bp.lg
-                        [ Tw.block
+            ]
+        ]
+
+
+quoteBig : String -> String -> String -> Maybe String -> String -> Html.Html Msg
+quoteBig quote name org logo headshot =
+    div
+        [ css
+            [ Tw.relative
+            , Tw.max_w_xl
+            ]
+        ]
+        [ case logo of
+            Just logoImage ->
+                img
+                    [ css
+                        [ Tw.mx_auto
+                        , Tw.h_8
+                        ]
+                    , Attr.src logoImage
+                    , Attr.alt "Workcation"
+                    ]
+                    []
+
+            Nothing ->
+                div [ css [] ] []
+        , blockquote
+            [ css
+                [ Tw.mt_10
+                ]
+            ]
+            [ div
+                [ css
+                    [ Tw.max_w_3xl
+                    , Tw.mx_auto
+                    , Tw.text_center
+                    , Tw.text_2xl
+                    , Tw.leading_9
+                    , Tw.font_medium
+                    , Tw.text_gray_900
+                    ]
+                ]
+                [ p []
+                    [ text "“"
+                    , text quote
+                    , text "”"
+                    ]
+                ]
+            , footer
+                [ css
+                    [ Tw.mt_8
+                    ]
+                ]
+                [ div
+                    [ css
+                        [ Bp.md
+                            [ Tw.flex
+                            , Tw.items_center
+                            , Tw.justify_center
+                            ]
                         ]
                     ]
-                , SvgAttr.width "404"
-                , SvgAttr.height "784"
-                , SvgAttr.fill "none"
-                , SvgAttr.viewBox "0 0 404 784"
-                , Attr.attribute "aria-hidden" "true"
-                ]
-                [ Svg.defs []
-                    [ Svg.pattern
-                        [ SvgAttr.id "64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
-                        , SvgAttr.x "0"
-                        , SvgAttr.y "0"
-                        , SvgAttr.width "20"
-                        , SvgAttr.height "20"
-                        , SvgAttr.patternUnits "userSpaceOnUse"
-                        ]
-                        [ Svg.rect
-                            [ SvgAttr.x "0"
-                            , SvgAttr.y "0"
-                            , SvgAttr.width "4"
-                            , SvgAttr.height "4"
-                            , SvgAttr.css
-                                [ Tw.text_gray_200
+                    [ div
+                        [ css
+                            [ Bp.md
+                                [ Tw.flex_shrink_0
                                 ]
-                            , SvgAttr.fill "currentColor"
+                            ]
+                        ]
+                        [ img
+                            [ css
+                                [ Tw.mx_auto
+                                , Tw.h_10
+                                , Tw.w_10
+                                , Tw.rounded_full
+                                ]
+                            , Attr.src headshot
+                            , Attr.alt ""
                             ]
                             []
                         ]
+                    , div
+                        [ css
+                            [ Tw.mt_3
+                            , Tw.text_center
+                            , Bp.md
+                                [ Tw.mt_0
+                                , Tw.ml_4
+                                , Tw.flex
+                                , Tw.items_center
+                                ]
+                            ]
+                        ]
+                        [ div
+                            [ css
+                                [ Tw.text_base
+                                , Tw.font_medium
+                                , Tw.text_gray_900
+                                ]
+                            ]
+                            [ text name ]
+                        , svg
+                            [ SvgAttr.css
+                                [ Tw.hidden
+                                , Tw.mx_1
+                                , Tw.h_5
+                                , Tw.w_5
+                                , Tw.text_indigo_600
+                                , Bp.md
+                                    [ Tw.block
+                                    ]
+                                ]
+                            , SvgAttr.fill "currentColor"
+                            , SvgAttr.viewBox "0 0 20 20"
+                            ]
+                            [ path
+                                [ SvgAttr.d "M11 0h3L9 20H6l5-20z"
+                                ]
+                                []
+                            ]
+                        , div
+                            [ css
+                                [ Tw.text_base
+                                , Tw.font_medium
+                                , Tw.text_gray_500
+                                ]
+                            ]
+                            [ text org ]
+                        ]
                     ]
-                , Svg.rect
-                    [ SvgAttr.width "404"
-                    , SvgAttr.height "784"
-                    , SvgAttr.fill "url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)"
-                    ]
-                    []
                 ]
             ]
         ]
 
 
-praise : Html.Html Msg
-praise =
+praise : String -> String -> String -> Maybe String -> String -> Html.Html Msg
+praise quote name org logo headshot =
     {- This example requires Tailwind CSS v2.0+ -}
     div [ css [ Tw.w_screen, Tw.bg_gray_100 ] ]
         [ section
@@ -2164,152 +2259,23 @@ praise =
                 [ Tw.py_12
                 , Tw.bg_gray_100
                 , Tw.overflow_hidden
+                , Tw.flex
+                , Tw.items_center
+                , Tw.justify_around
 
                 -- , Tw.w_screen
                 , Bp.lg
                     [ Tw.py_24
+                    , Tw.px_8
                     ]
                 , Bp.md
                     [ Tw.py_20
                     ]
+                , Bp.sm
+                    [ Tw.px_6
+                    ]
                 ]
             ]
-            [ div
-                [ css
-                    [ Tw.relative
-
-                    -- , Tw.max_w_7xl
-                    , Tw.mx_auto
-                    , Tw.px_4
-                    , Bp.lg
-                        [ Tw.px_8
-                        ]
-                    , Bp.sm
-                        [ Tw.px_6
-                        ]
-                    ]
-                ]
-                [ div
-                    [ css
-                        [ Tw.relative
-                        ]
-                    ]
-                    [ img
-                        [ css
-                            [ Tw.mx_auto
-                            , Tw.h_8
-                            ]
-                        , Attr.src "images/espn.svg"
-                        , Attr.alt "Workcation"
-                        ]
-                        []
-                    , blockquote
-                        [ css
-                            [ Tw.mt_10
-                            ]
-                        ]
-                        [ div
-                            [ css
-                                [ Tw.max_w_3xl
-                                , Tw.mx_auto
-                                , Tw.text_center
-                                , Tw.text_2xl
-                                , Tw.leading_9
-                                , Tw.font_medium
-                                , Tw.text_gray_900
-                                ]
-                            ]
-                            [ p []
-                                [ text "“"
-                                , text "This book was really, really well done."
-                                , text "”"
-                                ]
-                            ]
-                        , footer
-                            [ css
-                                [ Tw.mt_8
-                                ]
-                            ]
-                            [ div
-                                [ css
-                                    [ Bp.md
-                                        [ Tw.flex
-                                        , Tw.items_center
-                                        , Tw.justify_center
-                                        ]
-                                    ]
-                                ]
-                                [ div
-                                    [ css
-                                        [ Bp.md
-                                            [ Tw.flex_shrink_0
-                                            ]
-                                        ]
-                                    ]
-                                    [ img
-                                        [ css
-                                            [ Tw.mx_auto
-                                            , Tw.h_10
-                                            , Tw.w_10
-                                            , Tw.rounded_full
-                                            ]
-                                        , Attr.src "images/billc_headshot.jpg"
-                                        , Attr.alt ""
-                                        ]
-                                        []
-                                    ]
-                                , div
-                                    [ css
-                                        [ Tw.mt_3
-                                        , Tw.text_center
-                                        , Bp.md
-                                            [ Tw.mt_0
-                                            , Tw.ml_4
-                                            , Tw.flex
-                                            , Tw.items_center
-                                            ]
-                                        ]
-                                    ]
-                                    [ div
-                                        [ css
-                                            [ Tw.text_base
-                                            , Tw.font_medium
-                                            , Tw.text_gray_900
-                                            ]
-                                        ]
-                                        [ text "Bill Connelly" ]
-                                    , svg
-                                        [ SvgAttr.css
-                                            [ Tw.hidden
-                                            , Tw.mx_1
-                                            , Tw.h_5
-                                            , Tw.w_5
-                                            , Tw.text_indigo_600
-                                            , Bp.md
-                                                [ Tw.block
-                                                ]
-                                            ]
-                                        , SvgAttr.fill "currentColor"
-                                        , SvgAttr.viewBox "0 0 20 20"
-                                        ]
-                                        [ path
-                                            [ SvgAttr.d "M11 0h3L9 20H6l5-20z"
-                                            ]
-                                            []
-                                        ]
-                                    , div
-                                        [ css
-                                            [ Tw.text_base
-                                            , Tw.font_medium
-                                            , Tw.text_gray_500
-                                            ]
-                                        ]
-                                        [ text "ESPN" ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+            [ quoteBig quote name org logo headshot
             ]
         ]
