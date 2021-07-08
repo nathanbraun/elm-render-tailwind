@@ -2097,7 +2097,7 @@ feature group id model =
                             , Tw.mt_10
                             , Tw.mb_6
                             ]
-                        , Tw.mb_6
+                        , Tw.mb_4
                         ]
                     , Attr.attribute "aria-hidden" "true"
                     ]
@@ -2107,7 +2107,7 @@ feature group id model =
                             , Tw.mx_auto
                             , Tw.object_scale_down
                             , Bp.md [ Tw.max_w_xs, Tw.w_auto ]
-                            , Tw.w_2over3
+                            , Tw.w_3over4
                             ]
                         , Attr.src "images/ltcwff_open_no_bg.png"
                         , Attr.alt ""
@@ -2125,6 +2125,8 @@ quoteBig quote name org logo headshot =
         [ css
             [ Tw.relative
             , Tw.max_w_xl
+            , Bp.md [ Tw.mx_0 ]
+            , Tw.mx_4
             ]
         ]
         [ case logo of
