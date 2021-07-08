@@ -51,9 +51,9 @@ engine =
                 ]
                 [ p
                     [ css
-                        [ Tw.mx_3
+                        [ Bp.md [ Tw.mx_0 ]
+                        , Tw.mx_4
                         , Tw.my_0
-                        , Bp.md [ Tw.mx_0 ]
                         , Tw.max_w_4xl
                         ]
                     ]
@@ -1798,11 +1798,12 @@ feature model =
         group =
             "107409184"
     in
-    {- This example requires Tailwind CSS v2.0+ -}
     div
         [ css
-            [ Tw.py_16
-            , Tw.overflow_hidden
+            [ Tw.overflow_hidden
+            , Bp.lg [ Tw.mt_32 ]
+            , Bp.md [ Tw.mt_16 ]
+            , Tw.mt_8
             ]
         ]
         [ div
@@ -1877,9 +1878,12 @@ feature model =
                         [ Bp.md
                             [ Tw.text_5xl
                             , Tw.tracking_tight
+                            , Tw.max_w_3xl
                             ]
+                        , Tw.max_w_sm
                         , Tw.text_4xl
                         , Tw.text_center
+                        , Tw.mx_auto
                         , Tw.leading_8
                         , Tw.font_extrabold
                         , Tw.text_gray_900
@@ -1888,10 +1892,10 @@ feature model =
                     [ text "Learn to Code with Fantasy Football" ]
                 , p
                     [ css
-                        [ Tw.mt_4
-                        , Tw.max_w_3xl
-                        , Tw.text_lg
-                        , Bp.md [ Tw.text_2xl ]
+                        [ Bp.md [ Tw.text_2xl, Tw.max_w_3xl ]
+                        , Tw.max_w_sm
+                        , Tw.mt_4
+                        , Tw.text_xl
                         , Tw.mx_auto
                         , Tw.text_center
                         , Tw.text_gray_500
@@ -1900,12 +1904,12 @@ feature model =
                     [ text "Python. Pandas. Web Scraping. Databases. SQL. Machine Learning. APIs." ]
                 , p
                     [ css
-                        [ Tw.max_w_2xl
+                        [ Bp.md [ Tw.text_2xl, Tw.mt_0 ]
+                        , Tw.text_xl
+                        , Tw.max_w_2xl
                         , Tw.mx_auto
                         , Tw.text_center
-                        , Tw.text_lg
                         , Tw.mt_2
-                        , Bp.md [ Tw.text_2xl, Tw.mt_0 ]
                         , Tw.text_gray_500
                         ]
                     ]
@@ -1914,24 +1918,21 @@ feature model =
             , div
                 [ css
                     [ Tw.relative
-                    , Tw.mt_12
+                    , Tw.mt_8
                     , Tw.flex
+                    , Tw.flex_wrap
                     , Tw.items_center
                     , Tw.justify_around
-
-                    -- , Bp.lg
-                    --     [ Tw.mt_24
-                    --     , Tw.grid
-                    --     , Tw.grid_cols_2
-                    --     , Tw.gap_8
-                    --     , Tw.items_center
-                    --     ]
                     ]
                 ]
                 [ div
                     [ css
-                        -- [ Tw.relative
-                        [ Tw.w_1over2
+                        [ Bp.lg
+                            [ Tw.w_1over2
+                            , Tw.order_1
+                            ]
+                        , Tw.mx_4
+                        , Tw.order_2
                         , Tw.h_full
                         ]
                     ]
@@ -2015,6 +2016,7 @@ feature model =
                                 [ Tw.rounded_md
                                 , Tw.shadow
                                 , Tw.flex_none
+                                , Tw.mx_auto
                                 ]
                             ]
                             [ button
@@ -2077,12 +2079,14 @@ feature model =
                     ]
                 , div
                     [ css
-                        [ Tw.mt_10
-                        , Tw.neg_mx_4
+                        [ Tw.neg_mx_4
                         , Tw.relative
                         , Bp.lg
                             [ Tw.mt_0
+                            , Tw.order_1
+                            , Tw.mt_10
                             ]
+                        , Tw.mb_6
                         ]
                     , Attr.attribute "aria-hidden" "true"
                     ]
