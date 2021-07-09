@@ -86,7 +86,7 @@ engine =
                     in
                     case ( version, test ) of
                         ( "A", Just A ) ->
-                            div [ css [ Tw.w_full ] ]
+                            div [ css [ Tw.w_full, Tw.h_full ] ]
                                 (renderAll model
                                     children
                                 )
@@ -95,6 +95,7 @@ engine =
                             div
                                 [ css
                                     [ Tw.w_full
+                                    , Tw.h_full
                                     ]
                                 ]
                                 (renderAll model
@@ -102,7 +103,7 @@ engine =
                                 )
 
                         _ ->
-                            div [] []
+                            div [ css [ Tw.hidden ] ] []
                 )
                 |> Markdown.Html.withAttribute "id"
                 |> Markdown.Html.withAttribute "version"
@@ -171,11 +172,12 @@ engine =
                 |> Markdown.Html.withOptionalAttribute "logo"
                 |> Markdown.Html.withAttribute "headshot"
             , Markdown.Html.tag "feature"
-                (\group id children model ->
-                    feature group id model
+                (\group id url children model ->
+                    feature group id url model
                 )
                 |> Markdown.Html.withAttribute "group"
                 |> Markdown.Html.withAttribute "id"
+                |> Markdown.Html.withAttribute "url"
             , Markdown.Html.tag "link"
                 (\url label children model ->
                     div
@@ -221,6 +223,7 @@ engine =
                             , Tw.flex_wrap
                             , Bp.md [ Tw.space_x_1 ]
                             , Tw.my_4
+                            , Tw.h_full
                             ]
                         ]
                         [ a
@@ -1807,8 +1810,8 @@ buy =
         ]
 
 
-feature : String -> String -> Model -> Html.Html Msg
-feature group id model =
+feature : String -> String -> String -> Model -> Html.Html Msg
+feature group id url model =
     div
         [ css
             [ Tw.overflow_hidden
@@ -2074,8 +2077,7 @@ feature group id model =
                             ]
                         ]
                         [ a
-                            -- [ Attr.href "https://transactions.sendowl.com/packages/801053/D380E68E/purchase"
-                            [ Attr.href "#buy"
+                            [ Attr.href url
                             , css
                                 [ Tw.border_none
                                 , Tw.bg_white
