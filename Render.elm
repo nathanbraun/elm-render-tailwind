@@ -901,15 +901,15 @@ textToTW string_ =
 
 buy : Html.Html Msg
 buy =
-    {- This example requires Tailwind CSS v2.0+ -}
     div
         [ css
-            -- [ Tw.bg_gray_900
-            [ Tw.bg_blue_600
+            [ Tw.bg_blue_900
             , Tw.w_screen
+            , Tw.min_h_screen
             ]
         ]
-        [ div
+        [ a [ Attr.id "buy" ] []
+        , div
             [ css
                 [ Tw.pt_12
                 , Bp.lg
@@ -944,18 +944,7 @@ buy =
                             ]
                         ]
                     ]
-                    [ h2
-                        [ css
-                            [ Tw.text_lg
-                            , Tw.leading_6
-                            , Tw.font_semibold
-                            , Tw.text_gray_300
-                            , Tw.uppercase
-                            , Tw.tracking_wider
-                            ]
-                        ]
-                        [ text "Pricing" ]
-                    , p
+                    [ p
                         [ css
                             [ Tw.text_3xl
                             , Tw.font_extrabold
@@ -968,14 +957,14 @@ buy =
                                 ]
                             ]
                         ]
-                        [ text "The right price for you, whoever you are" ]
+                        [ text "Get Learn to Code with Fantasy Football" ]
                     , p
                         [ css
                             [ Tw.text_xl
                             , Tw.text_gray_300
                             ]
                         ]
-                        [ text "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum sequi unde repudiandae natus." ]
+                        [ text "Buy with the 2021 Fantasy Football Developer Kit and save." ]
                     ]
                 ]
             ]
@@ -983,7 +972,8 @@ buy =
             [ css
                 [ Tw.mt_8
                 , Tw.pb_12
-                , Tw.bg_gray_50
+
+                -- , Tw.bg_gray_50
                 , Bp.lg
                     [ Tw.mt_16
                     , Tw.pb_24
@@ -1004,7 +994,6 @@ buy =
                         [ Tw.absolute
                         , Tw.inset_0
                         , Tw.h_3over4
-                        , Tw.bg_blue_600
                         ]
                     ]
                     []
@@ -1084,7 +1073,17 @@ buy =
                                         , Tw.font_extrabold
                                         ]
                                     ]
-                                    [ text "$60"
+                                    [ text "$59"
+                                    , span
+                                        [ css
+                                            [ Tw.ml_3
+                                            , Tw.font_semibold
+                                            , Tw.text_gray_600
+                                            , Tw.text_xl
+                                            , Tw.my_auto
+                                            ]
+                                        ]
+                                        [ text "USD" ]
                                     ]
                                 , p
                                     [ css
@@ -1093,7 +1092,7 @@ buy =
                                         , Tw.text_gray_500
                                         ]
                                     ]
-                                    [ text "Lorem ipsum dolor sit amet consectetur, adipisicing elit." ]
+                                    [ text "Includes book, datasets, example scripts, end of chapter problems with full solutions, and flashcards." ]
                                 ]
                             , div
                                 [ css
@@ -1156,48 +1155,7 @@ buy =
                                                 , Tw.ml_3
                                                 ]
                                             ]
-                                            [ text "The 270 page book in PDF format" ]
-                                        ]
-                                    , li
-                                        [ css
-                                            [ Tw.flex
-                                            , Tw.items_start
-                                            ]
-                                        ]
-                                        [ div
-                                            [ css
-                                                [ Tw.flex_shrink_0
-                                                ]
-                                            ]
-                                            [ {- Heroicon name: outline/check -}
-                                              svg
-                                                [ SvgAttr.css
-                                                    [ Tw.h_6
-                                                    , Tw.w_6
-                                                    , Tw.text_green_500
-                                                    ]
-                                                , SvgAttr.fill "none"
-                                                , SvgAttr.viewBox "0 0 24 24"
-                                                , SvgAttr.stroke "currentColor"
-                                                , Attr.attribute "aria-hidden" "true"
-                                                ]
-                                                [ path
-                                                    [ SvgAttr.strokeLinecap "round"
-                                                    , SvgAttr.strokeLinejoin "round"
-                                                    , SvgAttr.strokeWidth "2"
-                                                    , SvgAttr.d "M5 13l4 4L19 7"
-                                                    ]
-                                                    []
-                                                ]
-                                            ]
-                                        , p
-                                            [ css
-                                                [ Tw.ml_3
-                                                , Tw.text_base
-                                                , Tw.text_gray_700
-                                                ]
-                                            ]
-                                            [ text "23 example scripts, 3 datasets, 100+ problems & full solutions " ]
+                                            [ text "The 270 page book in PDF format + files" ]
                                         ]
                                     , li
                                         [ css
@@ -1285,12 +1243,10 @@ buy =
                                     ]
                                 , div
                                     [ css
-                                        [ Tw.rounded_md
-                                        , Tw.shadow
-                                        ]
+                                        []
                                     ]
                                     [ a
-                                        [ Attr.href "#"
+                                        [ Attr.href "https://transactions.sendowl.com/packages/801053/D380E68E/purchase"
                                         , css
                                             [ Tw.flex
                                             , Tw.items_center
@@ -1298,19 +1254,34 @@ buy =
                                             , Tw.px_5
                                             , Tw.py_3
                                             , Tw.border
+                                            , Tw.rounded_md
+                                            , Tw.shadow
                                             , Tw.border_transparent
                                             , Tw.text_base
-                                            , Tw.font_medium
-                                            , Tw.rounded_md
+                                            , Tw.font_semibold
                                             , Tw.text_gray_900
-                                            , Tw.bg_gray_200
+                                            , Tw.bg_gray_300
+                                            , Tw.self_end
                                             , Css.hover
-                                                [ Tw.bg_gray_400
+                                                [ Tw.bg_gray_500
                                                 ]
                                             ]
                                         , Attr.attribute "aria-describedby" "tier-standard"
                                         ]
                                         [ text "Buy Now" ]
+                                    , p
+                                        [ css
+                                            [ Tw.text_center
+                                            , Tw.mt_4
+
+                                            -- , Tw.text_gray_600
+                                            , Tw.font_semibold
+                                            , Tw.text_blue_900
+                                            ]
+                                        ]
+                                        [ text "30 day money back "
+                                        , span [ css [] ] [ text "guarantee!" ]
+                                        ]
                                     ]
                                 ]
                             ]
@@ -1361,7 +1332,28 @@ buy =
                                         , Tw.font_extrabold
                                         ]
                                     ]
-                                    [ text "$140"
+                                    [ span
+                                        [ css
+                                            [ Tw.line_through
+                                            , Tw.mr_3
+                                            , Tw.text_2xl
+                                            , Tw.my_auto
+                                            , Tw.font_semibold
+                                            , Tw.text_gray_400
+                                            ]
+                                        ]
+                                        [ text "$169" ]
+                                    , text "$99"
+                                    , span
+                                        [ css
+                                            [ Tw.ml_3
+                                            , Tw.font_semibold
+                                            , Tw.text_gray_600
+                                            , Tw.text_xl
+                                            , Tw.my_auto
+                                            ]
+                                        ]
+                                        [ text "USD" ]
                                     ]
                                 , p
                                     [ css
@@ -1370,7 +1362,7 @@ buy =
                                         , Tw.text_gray_500
                                         ]
                                     ]
-                                    [ text "Lorem ipsum dolor sit amet consectetur, adipisicing elit." ]
+                                    [ text "The book, files and flashcards, plus the 2021 developer kit. Includes API and Fantasy Math web access for the 2021 season." ]
                                 ]
                             , div
                                 [ css
@@ -1433,48 +1425,7 @@ buy =
                                                 , Tw.text_gray_700
                                                 ]
                                             ]
-                                            [ text "The 270 page book in PDF format" ]
-                                        ]
-                                    , li
-                                        [ css
-                                            [ Tw.flex
-                                            , Tw.items_start
-                                            ]
-                                        ]
-                                        [ div
-                                            [ css
-                                                [ Tw.flex_shrink_0
-                                                ]
-                                            ]
-                                            [ {- Heroicon name: outline/check -}
-                                              svg
-                                                [ SvgAttr.css
-                                                    [ Tw.h_6
-                                                    , Tw.w_6
-                                                    , Tw.text_green_500
-                                                    ]
-                                                , SvgAttr.fill "none"
-                                                , SvgAttr.viewBox "0 0 24 24"
-                                                , SvgAttr.stroke "currentColor"
-                                                , Attr.attribute "aria-hidden" "true"
-                                                ]
-                                                [ path
-                                                    [ SvgAttr.strokeLinecap "round"
-                                                    , SvgAttr.strokeLinejoin "round"
-                                                    , SvgAttr.strokeWidth "2"
-                                                    , SvgAttr.d "M5 13l4 4L19 7"
-                                                    ]
-                                                    []
-                                                ]
-                                            ]
-                                        , p
-                                            [ css
-                                                [ Tw.ml_3
-                                                , Tw.text_base
-                                                , Tw.text_gray_700
-                                                ]
-                                            ]
-                                            [ text "23 example scripts, 3 datasets, 100+ problems & full solutions " ]
+                                            [ text "The 270 page book in PDF format + files" ]
                                         ]
                                     , li
                                         [ css
@@ -1643,12 +1594,10 @@ buy =
                                     ]
                                 , div
                                     [ css
-                                        [ Tw.rounded_md
-                                        , Tw.shadow
-                                        ]
+                                        []
                                     ]
                                     [ a
-                                        [ Attr.href "#"
+                                        [ Attr.href "https://transactions.sendowl.com/packages/814622/8C195419/purchase"
                                         , css
                                             [ Tw.flex
                                             , Tw.items_center
@@ -1658,8 +1607,9 @@ buy =
                                             , Tw.border
                                             , Tw.border_transparent
                                             , Tw.text_base
-                                            , Tw.font_medium
+                                            , Tw.font_semibold
                                             , Tw.rounded_md
+                                            , Tw.shadow
                                             , Tw.text_white
                                             , Tw.bg_gray_800
                                             , Css.hover
@@ -1669,6 +1619,19 @@ buy =
                                         , Attr.attribute "aria-describedby" "tier-standard"
                                         ]
                                         [ text "Buy Now" ]
+                                    , p
+                                        [ css
+                                            [ Tw.text_center
+                                            , Tw.mt_4
+
+                                            -- , Tw.text_gray_600
+                                            , Tw.font_semibold
+                                            , Tw.text_blue_900
+                                            ]
+                                        ]
+                                        [ text "30 day money back "
+                                        , span [ css [] ] [ text "guarantee!" ]
+                                        ]
                                     ]
                                 ]
                             ]
@@ -1744,14 +1707,14 @@ buy =
                                     , Tw.text_gray_600
                                     ]
                                 ]
-                                [ text "Already own Learn to Code with Fantasy Football and just need API access? Get it now for "
+                                [ text "Already own Learn to Code with Fantasy Football and just need API access for 2021? Get it now for "
                                 , span
                                     [ css
                                         [ Tw.font_semibold
                                         , Tw.text_gray_900
                                         ]
                                     ]
-                                    [ text "$100" ]
+                                    [ text "$59" ]
                                 , text "."
                                 ]
                             ]
@@ -1768,7 +1731,7 @@ buy =
                                 ]
                             ]
                             [ a
-                                [ Attr.href "#"
+                                [ Attr.href "https://transactions.sendowl.com/products/78541690/EE5C0FB5/purchase"
                                 , css
                                     [ Tw.flex
                                     , Tw.items_center
@@ -1791,6 +1754,54 @@ buy =
                             ]
                         ]
                     ]
+                ]
+            ]
+        , div
+            [ css
+                [ Tw.max_w_7xl
+                , Tw.mx_auto
+                , Tw.text_center
+                , Tw.px_4
+                , Tw.pb_10
+                , Bp.lg
+                    [ Tw.px_8
+                    ]
+                , Bp.sm
+                    [ Tw.px_6
+                    ]
+                ]
+            ]
+            [ div
+                [ css
+                    [ Tw.max_w_3xl
+                    , Tw.mx_auto
+                    , Tw.space_y_2
+                    , Bp.lg
+                        [ Tw.max_w_none
+                        ]
+                    ]
+                ]
+                [ p
+                    [ css
+                        [ Tw.text_3xl
+                        , Tw.font_extrabold
+                        , Tw.text_white
+                        , Bp.lg
+                            [ Tw.text_5xl
+                            ]
+                        , Bp.sm
+                            [ Tw.text_4xl
+                            ]
+                        ]
+                    ]
+                    [ text "30 Day Money Back Guarantee" ]
+                , p
+                    [ css
+                        [ Tw.text_xl
+                        , Tw.text_gray_300
+                        ]
+                    ]
+                    [ text "Try it! If you're not satisified, contact me within 30 days and I'll refund you the purchase price." ]
                 ]
             ]
         ]
@@ -2063,7 +2074,8 @@ feature group id model =
                             ]
                         ]
                         [ a
-                            [ Attr.href "https://transactions.sendowl.com/packages/801053/D380E68E/purchase"
+                            -- [ Attr.href "https://transactions.sendowl.com/packages/801053/D380E68E/purchase"
+                            [ Attr.href "#buy"
                             , css
                                 [ Tw.border_none
                                 , Tw.bg_white
@@ -2255,11 +2267,10 @@ quoteBig quote name org logo headshot =
 praise : String -> String -> String -> Maybe String -> String -> Html.Html Msg
 praise quote name org logo headshot =
     {- This example requires Tailwind CSS v2.0+ -}
-    div [ css [ Tw.w_screen, Tw.bg_gray_100 ] ]
+    div [ css [ Tw.w_screen, Tw.bg_gray_200 ] ]
         [ section
             [ css
                 [ Tw.py_12
-                , Tw.bg_gray_100
                 , Tw.overflow_hidden
                 , Tw.flex
                 , Tw.items_center
