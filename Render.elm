@@ -158,9 +158,9 @@ engine =
                             ]
                         ]
                 )
-            , Markdown.Html.tag "buy"
+            , Markdown.Html.tag "buy_football"
                 (\children model ->
-                    buy
+                    buyFootball
                 )
             , Markdown.Html.tag "praise"
                 (\quote name org logo headshot children model ->
@@ -900,12 +900,8 @@ textToTW string_ =
             Tw.transform_none
 
 
-
--- TODO: fix this hack
-
-
-buy : Html.Html Msg
-buy =
+buyFootball : Html.Html Msg
+buyFootball =
     div
         [ css
             [ Tw.bg_blue_900
