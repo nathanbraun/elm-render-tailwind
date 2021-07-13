@@ -171,9 +171,11 @@ engine =
                 |> Markdown.Html.withAttribute "org"
                 |> Markdown.Html.withOptionalAttribute "logo"
                 |> Markdown.Html.withAttribute "headshot"
-            , Markdown.Html.tag "feature"
+            , Markdown.Html.tag "football_top" footballTop
+                |> Markdown.Html.withAttribute "image"
+            , Markdown.Html.tag "email_and_buy"
                 (\group id url children model ->
-                    feature group id url model
+                    emailAndBuy group id url model
                 )
                 |> Markdown.Html.withAttribute "group"
                 |> Markdown.Html.withAttribute "id"
@@ -1810,8 +1812,8 @@ buy =
         ]
 
 
-feature : String -> String -> String -> Model -> Html.Html Msg
-feature group id url model =
+footballTop : String -> List (Model -> Html.Html Msg) -> Model -> Html.Html Msg
+footballTop image children model =
     div
         [ css
             [ Tw.overflow_hidden
@@ -1986,120 +1988,7 @@ feature group id url model =
                         ]
                         [ text "This book will take you from playing around with stats in Excel to scraping websites, building databases and running your own machine learning models."
                         ]
-                    , form
-                        [ css
-                            [ Tw.flex
-                            , Tw.flex_wrap
-                            , Bp.md [ Tw.flex_nowrap ]
-                            , Tw.items_center
-                            , Tw.justify_start
-                            , Tw.w_full
-                            , Tw.mt_8
-                            ]
-                        , onSubmit (SubmitEmail group id model.email)
-                        ]
-                        [ label
-                            [ Attr.for "emailAddress"
-                            , css []
-                            ]
-                            []
-                        , input
-                            [ Attr.id "emailAddress"
-                            , Attr.name "email"
-                            , Attr.type_ "email"
-                            , Attr.attribute "autocomplete" "email"
-                            , Attr.required True
-                            , Attr.value model.email
-                            , onInput UpdateEmail
-                            , css
-                                [ Tw.w_full
-                                , Tw.placeholder_gray_500
-                                , Tw.border_gray_200
-                                , Tw.rounded_xl
-                                , Tw.py_3
-                                , Tw.px_2
-                                , Tw.text_base
-                                , Tw.mr_2
-                                , Css.focus
-                                    [ Tw.ring_indigo_500
-                                    , Tw.border_indigo_500
-                                    ]
-                                ]
-                            , Attr.placeholder "Email"
-                            ]
-                            []
-                        , div
-                            [ css
-                                [ Tw.rounded_md
-                                , Tw.shadow
-                                , Tw.flex_none
-                                , Tw.mx_auto
-                                ]
-                            ]
-                            [ button
-                                [ Attr.type_ "submit"
-                                , css
-                                    [ Tw.w_full
-                                    , Tw.mt_3
-                                    , Bp.md [ Tw.mt_0 ]
-                                    , Tw.px_5
-                                    , Tw.py_3
-                                    , Tw.text_base
-                                    , Tw.font_medium
-                                    , Tw.rounded_md
-                                    , Tw.text_white
-                                    , Tw.bg_blue_500
-                                    , Tw.font_semibold
-                                    , Css.focus
-                                        [ Tw.outline_none
-                                        , Tw.ring_2
-                                        , Tw.ring_offset_2
-                                        , Tw.ring_blue_400
-                                        ]
-                                    , Css.hover
-                                        [ Tw.bg_blue_600
-                                        ]
-                                    ]
-                                ]
-                                [ text "Send me a free sample chapter" ]
-                            ]
-                        ]
-                    , div
-                        [ css
-                            [ Tw.px_2
-                            , Tw.flex
-                            , Tw.items_center
-                            , Tw.justify_center
-                            , Tw.flex_wrap
-                            , Bp.md [ Tw.space_x_1 ]
-                            , Tw.mt_4
-                            , Tw.mb_8
-                            ]
-                        ]
-                        [ a
-                            [ Attr.href url
-                            , css
-                                [ Tw.border_none
-                                , Tw.bg_white
-                                , Tw.text_lg
-                                , Tw.text_blue_600
-                                , Tw.underline
-                                , Tw.font_semibold
-                                ]
-                            , onClick (OpenCheckout "buy")
-                            ]
-                            [ text "Ready to buy now?" ]
-                        , span [ css [ Tw.hidden, Bp.md [ Tw.inline_flex ] ] ]
-                            [ text " — " ]
-                        , span
-                            [ css
-                                [ Tw.inline_flex
-                                , Tw.text_gray_700
-                                , Tw.font_semibold
-                                ]
-                            ]
-                            [ text "30 day money back guarantee!" ]
-                        ]
+                    , div [] (renderAll model children)
                     ]
                 , div
                     [ css
@@ -2123,7 +2012,7 @@ feature group id url model =
                             , Bp.md [ Tw.max_w_xs, Tw.w_auto ]
                             , Tw.w_3over4
                             ]
-                        , Attr.src "images/ltcwff_open_no_bg.png"
+                        , Attr.src image
                         , Attr.alt ""
                         ]
                         []
@@ -2292,5 +2181,125 @@ praise quote name org logo headshot =
                 ]
             ]
             [ quoteBig quote name org logo headshot
+            ]
+        ]
+
+
+emailAndBuy : String -> String -> String -> Model -> Html.Html Msg
+emailAndBuy group id url model =
+    div []
+        [ form
+            [ css
+                [ Tw.flex
+                , Tw.flex_wrap
+                , Bp.md [ Tw.flex_nowrap ]
+                , Tw.items_center
+                , Tw.justify_start
+                , Tw.w_full
+                , Tw.mt_8
+                ]
+            , onSubmit (SubmitEmail group id model.email)
+            ]
+            [ label
+                [ Attr.for "emailAddress"
+                , css []
+                ]
+                []
+            , input
+                [ Attr.id "emailAddress"
+                , Attr.name "email"
+                , Attr.type_ "email"
+                , Attr.attribute "autocomplete" "email"
+                , Attr.required True
+                , Attr.value model.email
+                , onInput UpdateEmail
+                , css
+                    [ Tw.w_full
+                    , Tw.placeholder_gray_500
+                    , Tw.border_gray_200
+                    , Tw.rounded_xl
+                    , Tw.py_3
+                    , Tw.px_2
+                    , Tw.text_base
+                    , Tw.mr_2
+                    , Css.focus
+                        [ Tw.ring_indigo_500
+                        , Tw.border_indigo_500
+                        ]
+                    ]
+                , Attr.placeholder "Email"
+                ]
+                []
+            , div
+                [ css
+                    [ Tw.rounded_md
+                    , Tw.shadow
+                    , Tw.flex_none
+                    , Tw.mx_auto
+                    ]
+                ]
+                [ button
+                    [ Attr.type_ "submit"
+                    , css
+                        [ Tw.w_full
+                        , Tw.mt_3
+                        , Bp.md [ Tw.mt_0 ]
+                        , Tw.px_5
+                        , Tw.py_3
+                        , Tw.text_base
+                        , Tw.font_medium
+                        , Tw.rounded_md
+                        , Tw.text_white
+                        , Tw.bg_blue_500
+                        , Tw.font_semibold
+                        , Css.focus
+                            [ Tw.outline_none
+                            , Tw.ring_2
+                            , Tw.ring_offset_2
+                            , Tw.ring_blue_400
+                            ]
+                        , Css.hover
+                            [ Tw.bg_blue_600
+                            ]
+                        ]
+                    ]
+                    [ text "Send me a free sample chapter" ]
+                ]
+            ]
+        , div
+            [ css
+                [ Tw.px_2
+                , Tw.flex
+                , Tw.items_center
+                , Tw.justify_center
+                , Tw.flex_wrap
+                , Bp.md [ Tw.space_x_1 ]
+                , Tw.mt_4
+                , Tw.mb_8
+                ]
+            ]
+            [ a
+                [ Attr.href url
+                , css
+                    [ Tw.border_none
+                    , Tw.bg_white
+                    , Tw.text_lg
+                    , Tw.text_blue_600
+                    , Tw.underline
+                    , Tw.font_semibold
+                    ]
+                , onClick (OpenCheckout "buy")
+                ]
+                [ text "Ready to buy now?" ]
+            , span [ css [ Tw.hidden, Bp.md [ Tw.inline_flex ] ] ]
+                [ text " — " ]
+            , span
+                [ css
+                    [ Tw.inline_flex
+                    , Tw.text_gray_700
+                    , Tw.font_semibold
+                    ]
+                ]
+                [ text "30 day money back guarantee!" ]
             ]
         ]
