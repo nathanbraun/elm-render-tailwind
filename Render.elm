@@ -162,6 +162,11 @@ engine =
                 (\children model ->
                     buyFootball
                 )
+            , Markdown.Html.tag "buy_baseball"
+                (\url children model ->
+                    buyBaseball url
+                )
+                |> Markdown.Html.withAttribute "url"
             , Markdown.Html.tag "sdk"
                 (\children model ->
                     sdk
@@ -176,6 +181,8 @@ engine =
                 |> Markdown.Html.withOptionalAttribute "logo"
                 |> Markdown.Html.withAttribute "headshot"
             , Markdown.Html.tag "football_top" footballTop
+                |> Markdown.Html.withAttribute "image"
+            , Markdown.Html.tag "baseball_top" baseballTop
                 |> Markdown.Html.withAttribute "image"
             , Markdown.Html.tag "email_and_buy"
                 (\group id url children model ->
@@ -2697,6 +2704,706 @@ sdk =
                 , onClick (OpenCheckout "buy")
                 ]
                 [ text "Buy 2021 developer kit!"
+                ]
+            ]
+        ]
+
+
+buyBaseball : String -> Html.Html Msg
+buyBaseball url =
+    div
+        [ css
+            [ Tw.bg_blue_900
+            , Tw.w_screen
+            , Tw.min_h_screen
+            ]
+        ]
+        [ a [ Attr.id "buy" ] []
+        , div
+            [ css
+                [ Tw.pt_12
+                , Bp.lg
+                    [ Tw.pt_24
+                    ]
+                , Bp.sm
+                    [ Tw.pt_16
+                    ]
+                ]
+            ]
+            [ div
+                [ css
+                    [ Tw.max_w_7xl
+                    , Tw.mx_auto
+                    , Tw.text_center
+                    , Tw.px_4
+                    , Bp.lg
+                        [ Tw.px_8
+                        ]
+                    , Bp.sm
+                        [ Tw.px_6
+                        ]
+                    ]
+                ]
+                [ div
+                    [ css
+                        [ Tw.max_w_3xl
+                        , Tw.mx_auto
+                        , Tw.space_y_2
+                        , Bp.lg
+                            [ Tw.max_w_none
+                            ]
+                        ]
+                    ]
+                    [ p
+                        [ css
+                            [ Tw.text_3xl
+                            , Tw.font_extrabold
+                            , Tw.text_white
+                            , Bp.lg
+                                [ Tw.text_5xl
+                                ]
+                            , Bp.sm
+                                [ Tw.text_4xl
+                                ]
+                            ]
+                        ]
+                        [ text "Get Learn to Code with Baseball" ]
+                    ]
+                ]
+            ]
+        , div
+            [ css
+                [ Tw.mt_8
+                , Tw.pb_12
+                , Bp.lg
+                    [ Tw.mt_16
+                    , Tw.pb_24
+                    ]
+                , Bp.sm
+                    [ Tw.mt_12
+                    , Tw.pb_16
+                    ]
+                ]
+            ]
+            [ div
+                [ css
+                    [ Tw.relative
+                    ]
+                ]
+                [ div
+                    [ css
+                        [ Tw.absolute
+                        , Tw.inset_0
+                        , Tw.h_3over4
+                        ]
+                    ]
+                    []
+                , div
+                    [ css
+                        [ Tw.relative
+                        , Tw.z_10
+                        , Tw.max_w_7xl
+                        , Tw.mx_auto
+                        , Tw.px_4
+                        , Bp.lg
+                            [ Tw.px_8
+                            ]
+                        , Bp.sm
+                            [ Tw.px_6
+                            ]
+                        ]
+                    ]
+                    [ div
+                        [ css
+                            [ Bp.lg
+                                [ Tw.max_w_md
+                                , Tw.space_y_0
+                                ]
+                            , Tw.max_w_md
+                            , Tw.mx_auto
+                            , Tw.space_y_4
+                            ]
+                        ]
+                        [ div
+                            [ css
+                                [ Tw.flex
+                                , Tw.flex_col
+                                , Tw.rounded_lg
+                                , Tw.shadow_lg
+                                , Tw.overflow_hidden
+                                ]
+                            ]
+                            [ div
+                                [ css
+                                    [ Tw.px_6
+                                    , Tw.py_8
+                                    , Tw.bg_white
+                                    , Bp.sm
+                                        [ Tw.p_10
+                                        , Tw.pb_6
+                                        ]
+                                    ]
+                                ]
+                                [ div
+                                    [ css
+                                        [ Tw.mt_4
+                                        , Tw.flex
+                                        , Tw.items_baseline
+                                        , Tw.text_6xl
+                                        , Tw.font_extrabold
+                                        ]
+                                    ]
+                                    [ text "$59"
+                                    , span
+                                        [ css
+                                            [ Tw.ml_3
+                                            , Tw.font_semibold
+                                            , Tw.text_gray_600
+                                            , Tw.text_xl
+                                            , Tw.my_auto
+                                            ]
+                                        ]
+                                        [ text "USD" ]
+                                    ]
+                                , p
+                                    [ css
+                                        [ Tw.mt_5
+                                        , Tw.text_lg
+                                        , Tw.text_gray_500
+                                        ]
+                                    ]
+                                    [ text "Includes book, datasets, example scripts, end of chapter problems with full solutions, and flashcards." ]
+                                ]
+                            , div
+                                [ css
+                                    [ Tw.flex_1
+                                    , Tw.flex
+                                    , Tw.flex_col
+                                    , Tw.justify_between
+                                    , Tw.px_6
+                                    , Tw.pt_6
+                                    , Tw.pb_8
+                                    , Tw.bg_gray_50
+                                    , Tw.space_y_6
+                                    , Bp.sm
+                                        [ Tw.p_10
+                                        , Tw.pt_6
+                                        ]
+                                    ]
+                                ]
+                                [ ul
+                                    [ css
+                                        [ Tw.space_y_4
+                                        ]
+                                    ]
+                                    [ li
+                                        [ css
+                                            [ Tw.flex
+                                            , Tw.items_start
+                                            ]
+                                        ]
+                                        [ div
+                                            [ css
+                                                [ Tw.flex_shrink_0
+                                                ]
+                                            ]
+                                            [ {- Heroicon name: outline/check -}
+                                              svg
+                                                [ SvgAttr.css
+                                                    [ Tw.h_6
+                                                    , Tw.w_6
+                                                    , Tw.text_green_500
+                                                    ]
+                                                , SvgAttr.fill "none"
+                                                , SvgAttr.viewBox "0 0 24 24"
+                                                , SvgAttr.stroke "currentColor"
+                                                , Attr.attribute "aria-hidden" "true"
+                                                ]
+                                                [ path
+                                                    [ SvgAttr.strokeLinecap "round"
+                                                    , SvgAttr.strokeLinejoin "round"
+                                                    , SvgAttr.strokeWidth "2"
+                                                    , SvgAttr.d "M5 13l4 4L19 7"
+                                                    ]
+                                                    []
+                                                ]
+                                            ]
+                                        , p
+                                            [ css
+                                                [ Tw.text_base
+                                                , Tw.text_gray_700
+                                                , Tw.ml_3
+                                                ]
+                                            ]
+                                            [ text "The 270 page book in PDF format" ]
+                                        ]
+                                    , li
+                                        [ css
+                                            [ Tw.flex
+                                            , Tw.items_start
+                                            ]
+                                        ]
+                                        [ div
+                                            [ css
+                                                [ Tw.flex_shrink_0
+                                                ]
+                                            ]
+                                            [ {- Heroicon name: outline/check -}
+                                              svg
+                                                [ SvgAttr.css
+                                                    [ Tw.h_6
+                                                    , Tw.w_6
+                                                    , Tw.text_green_500
+                                                    ]
+                                                , SvgAttr.fill "none"
+                                                , SvgAttr.viewBox "0 0 24 24"
+                                                , SvgAttr.stroke "currentColor"
+                                                , Attr.attribute "aria-hidden" "true"
+                                                ]
+                                                [ path
+                                                    [ SvgAttr.strokeLinecap "round"
+                                                    , SvgAttr.strokeLinejoin "round"
+                                                    , SvgAttr.strokeWidth "2"
+                                                    , SvgAttr.d "M5 13l4 4L19 7"
+                                                    ]
+                                                    []
+                                                ]
+                                            ]
+                                        , p
+                                            [ css
+                                                [ Tw.ml_3
+                                                , Tw.text_base
+                                                , Tw.text_gray_700
+                                                ]
+                                            ]
+                                            [ text "300+ spaced repetition flash cards" ]
+                                        ]
+                                    , li
+                                        [ css
+                                            [ Tw.flex
+                                            , Tw.items_start
+                                            ]
+                                        ]
+                                        [ div
+                                            [ css
+                                                [ Tw.flex_shrink_0
+                                                ]
+                                            ]
+                                            [ {- Heroicon name: outline/check -}
+                                              svg
+                                                [ SvgAttr.css
+                                                    [ Tw.h_6
+                                                    , Tw.w_6
+                                                    , Tw.text_green_500
+                                                    ]
+                                                , SvgAttr.fill "none"
+                                                , SvgAttr.viewBox "0 0 24 24"
+                                                , SvgAttr.stroke "currentColor"
+                                                , Attr.attribute "aria-hidden" "true"
+                                                ]
+                                                [ path
+                                                    [ SvgAttr.strokeLinecap "round"
+                                                    , SvgAttr.strokeLinejoin "round"
+                                                    , SvgAttr.strokeWidth "2"
+                                                    , SvgAttr.d "M5 13l4 4L19 7"
+                                                    ]
+                                                    []
+                                                ]
+                                            ]
+                                        , p
+                                            [ css
+                                                [ Tw.ml_3
+                                                , Tw.text_base
+                                                , Tw.text_gray_700
+                                                ]
+                                            ]
+                                            [ text "23 example scripts, 10 datasets" ]
+                                        ]
+                                    , li
+                                        [ css
+                                            [ Tw.flex
+                                            , Tw.items_start
+                                            ]
+                                        ]
+                                        [ div
+                                            [ css
+                                                [ Tw.flex_shrink_0
+                                                ]
+                                            ]
+                                            [ {- Heroicon name: outline/check -}
+                                              svg
+                                                [ SvgAttr.css
+                                                    [ Tw.h_6
+                                                    , Tw.w_6
+                                                    , Tw.text_green_500
+                                                    ]
+                                                , SvgAttr.fill "none"
+                                                , SvgAttr.viewBox "0 0 24 24"
+                                                , SvgAttr.stroke "currentColor"
+                                                , Attr.attribute "aria-hidden" "true"
+                                                ]
+                                                [ path
+                                                    [ SvgAttr.strokeLinecap "round"
+                                                    , SvgAttr.strokeLinejoin "round"
+                                                    , SvgAttr.strokeWidth "2"
+                                                    , SvgAttr.d "M5 13l4 4L19 7"
+                                                    ]
+                                                    []
+                                                ]
+                                            ]
+                                        , p
+                                            [ css
+                                                [ Tw.ml_3
+                                                , Tw.text_base
+                                                , Tw.text_gray_700
+                                                ]
+                                            ]
+                                            [ text "100+ practice problems with full solutions" ]
+                                        ]
+                                    , li
+                                        [ css
+                                            [ Tw.flex
+                                            , Tw.items_start
+                                            ]
+                                        ]
+                                        [ div
+                                            [ css
+                                                [ Tw.flex_shrink_0
+                                                ]
+                                            ]
+                                            [ {- Heroicon name: outline/check -}
+                                              svg
+                                                [ SvgAttr.css
+                                                    [ Tw.h_6
+                                                    , Tw.w_6
+                                                    , Tw.text_green_500
+                                                    ]
+                                                , SvgAttr.fill "none"
+                                                , SvgAttr.viewBox "0 0 24 24"
+                                                , SvgAttr.stroke "currentColor"
+                                                , Attr.attribute "aria-hidden" "true"
+                                                ]
+                                                [ path
+                                                    [ SvgAttr.strokeLinecap "round"
+                                                    , SvgAttr.strokeLinejoin "round"
+                                                    , SvgAttr.strokeWidth "2"
+                                                    , SvgAttr.d "M5 13l4 4L19 7"
+                                                    ]
+                                                    []
+                                                ]
+                                            ]
+                                        , p
+                                            [ css
+                                                [ Tw.ml_3
+                                                , Tw.text_base
+                                                , Tw.text_gray_700
+                                                ]
+                                            ]
+                                            [ text "lifetime updates" ]
+                                        ]
+                                    ]
+                                , div
+                                    [ css
+                                        []
+                                    ]
+                                    [ a
+                                        [ Attr.href url
+                                        , css
+                                            [ Tw.flex
+                                            , Tw.items_center
+                                            , Tw.justify_center
+                                            , Tw.px_5
+                                            , Tw.py_3
+                                            , Tw.border
+                                            , Tw.rounded_md
+                                            , Tw.shadow
+                                            , Tw.border_transparent
+                                            , Tw.text_base
+                                            , Tw.font_semibold
+                                            , Tw.self_end
+                                            , Tw.text_white
+                                            , Tw.bg_gray_800
+                                            , Css.hover
+                                                [ Tw.bg_gray_900
+                                                ]
+                                            ]
+                                        , Attr.attribute "aria-describedby" "tier-standard"
+                                        ]
+                                        [ text "Buy Now" ]
+                                    , p
+                                        [ css
+                                            [ Tw.text_center
+                                            , Tw.mt_4
+                                            , Tw.font_semibold
+                                            , Tw.text_blue_900
+                                            ]
+                                        ]
+                                        [ text "30 day money back "
+                                        , span [ css [] ] [ text "guarantee!" ]
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        , div
+            [ css
+                [ Tw.max_w_7xl
+                , Tw.mx_auto
+                , Tw.text_center
+                , Tw.px_4
+                , Tw.pb_10
+                , Bp.lg
+                    [ Tw.px_8
+                    ]
+                , Bp.sm
+                    [ Tw.px_6
+                    ]
+                ]
+            ]
+            [ div
+                [ css
+                    [ Tw.max_w_3xl
+                    , Tw.mx_auto
+                    , Tw.space_y_2
+                    , Bp.lg
+                        [ Tw.max_w_none
+                        ]
+                    ]
+                ]
+                [ p
+                    [ css
+                        [ Tw.text_3xl
+                        , Tw.font_extrabold
+                        , Tw.text_white
+                        , Bp.lg
+                            [ Tw.text_5xl
+                            ]
+                        , Bp.sm
+                            [ Tw.text_4xl
+                            ]
+                        ]
+                    ]
+                    [ text "30 Day Money Back Guarantee" ]
+                , p
+                    [ css
+                        [ Tw.text_xl
+                        , Tw.text_gray_300
+                        ]
+                    ]
+                    [ text "Try it! If you're not satisified, contact me within 30 days and I'll refund you the purchase price." ]
+                ]
+            ]
+        ]
+
+
+baseballTop : String -> List (Model -> Html.Html Msg) -> Model -> Html.Html Msg
+baseballTop image children model =
+    div
+        [ css
+            [ Tw.overflow_hidden
+            , Bp.lg [ Tw.mt_32 ]
+            , Bp.md [ Tw.mt_16 ]
+            , Tw.mt_8
+            ]
+        ]
+        [ div
+            [ css
+                [ Tw.relative
+                , Tw.max_w_xl
+                , Tw.mx_auto
+                , Tw.px_4
+                , Bp.lg
+                    [ Tw.px_8
+                    , Tw.max_w_7xl
+                    ]
+                , Bp.sm
+                    [ Tw.px_6
+                    ]
+                ]
+            ]
+            [ svg
+                [ SvgAttr.css
+                    [ Tw.hidden
+                    , Tw.absolute
+                    , Tw.left_full
+                    , Tw.transform
+                    , Tw.neg_translate_x_1over2
+                    , Tw.neg_translate_y_1over4
+                    , Bp.lg
+                        [ Tw.block
+                        ]
+                    ]
+                , SvgAttr.width "404"
+                , SvgAttr.height "784"
+                , SvgAttr.fill "none"
+                , SvgAttr.viewBox "0 0 404 784"
+                , Attr.attribute "aria-hidden" "true"
+                ]
+                [ Svg.defs []
+                    [ Svg.pattern
+                        [ SvgAttr.id "b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
+                        , SvgAttr.x "0"
+                        , SvgAttr.y "0"
+                        , SvgAttr.width "20"
+                        , SvgAttr.height "20"
+                        , SvgAttr.patternUnits "userSpaceOnUse"
+                        ]
+                        [ Svg.rect
+                            [ SvgAttr.x "0"
+                            , SvgAttr.y "0"
+                            , SvgAttr.width "4"
+                            , SvgAttr.height "4"
+                            , SvgAttr.css
+                                [ Tw.text_gray_200
+                                ]
+                            , SvgAttr.fill "currentColor"
+                            ]
+                            []
+                        ]
+                    ]
+                , Svg.rect
+                    [ SvgAttr.width "404"
+                    , SvgAttr.height "784"
+                    , SvgAttr.fill "url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)"
+                    ]
+                    []
+                ]
+            , div
+                [ css
+                    [ Tw.relative
+                    ]
+                ]
+                [ h2
+                    [ css
+                        [ Bp.md
+                            [ Tw.text_5xl
+                            , Tw.tracking_tight
+                            , Tw.max_w_3xl
+                            ]
+                        , Tw.max_w_sm
+                        , Tw.text_4xl
+                        , Tw.text_center
+                        , Tw.mx_auto
+                        , Tw.leading_8
+                        , Tw.font_extrabold
+                        , Tw.text_gray_900
+                        ]
+                    ]
+                    [ text "Learn to Code with Baseball" ]
+                , p
+                    [ css
+                        [ Bp.md [ Tw.text_2xl, Tw.max_w_3xl ]
+                        , Tw.max_w_sm
+                        , Tw.mt_4
+                        , Tw.text_lg
+                        , Tw.mx_auto
+                        , Tw.text_center
+                        , Tw.text_gray_500
+                        ]
+                    ]
+                    [ text "Python. Pandas. Web Scraping. Databases. SQL. Machine Learning. APIs." ]
+                , p
+                    [ css
+                        [ Bp.md [ Tw.text_2xl, Tw.mt_0, Tw.mb_0 ]
+                        , Tw.mb_10
+                        , Tw.text_lg
+                        , Tw.max_w_2xl
+                        , Tw.mx_auto
+                        , Tw.text_center
+                        , Tw.mt_2
+                        , Tw.text_gray_500
+                        ]
+                    ]
+                    [ text "All applied to Baseball Statistics" ]
+                ]
+            , div
+                [ css
+                    [ Tw.relative
+                    , Tw.mt_0
+                    , Tw.flex
+                    , Tw.flex_wrap
+                    , Tw.items_center
+                    , Tw.justify_around
+                    ]
+                ]
+                [ div
+                    [ css
+                        [ Bp.lg
+                            [ Tw.w_1over2
+                            , Tw.order_1
+                            , Tw.mt_0
+                            ]
+                        , Tw.mt_6
+                        , Tw.mx_4
+                        , Tw.order_2
+                        , Tw.h_full
+                        ]
+                    ]
+                    [ h3
+                        [ css
+                            [ Tw.text_2xl
+                            , Bp.md
+                                [ Tw.text_3xl
+                                , Tw.tracking_tight
+                                ]
+                            , Tw.font_extrabold
+                            , Tw.text_gray_900
+                            , Tw.tracking_tight
+                            ]
+                        ]
+                        [ text "Learn Python & Data Science Fundamentals with Baseball" ]
+                    , p
+                        [ css
+                            [ Tw.mt_3
+                            , Tw.text_lg
+                            , Tw.text_gray_500
+                            ]
+                        ]
+                        [ text "Learning to code isn't "
+                        , span [ css [ Tw.italic ] ] [ text "hard" ]
+                        , text ", there's just a learning curve. That's why the most important thing is starting with a project you're excited about."
+                        ]
+                    , p
+                        [ css
+                            [ Tw.mt_3
+                            , Tw.text_lg
+                            , Tw.text_gray_500
+                            ]
+                        ]
+                        [ text "This book will take you from playing around with stats in Excel to scraping websites, building databases and running your own machine learning models."
+                        ]
+                    , div [] (renderAll model children)
+                    ]
+                , div
+                    [ css
+                        -- [ Tw.neg_mx_4
+                        [ Tw.relative
+                        , Bp.lg
+                            [ Tw.mt_0
+                            , Tw.order_1
+                            , Tw.mt_10
+                            , Tw.mb_6
+                            ]
+                        , Tw.mb_4
+                        ]
+                    , Attr.attribute "aria-hidden" "true"
+                    ]
+                    [ img
+                        [ css
+                            [ Tw.relative
+                            , Tw.mx_auto
+                            , Tw.object_scale_down
+                            , Bp.md [ Tw.max_w_xs, Tw.w_auto ]
+                            , Tw.w_3over4
+                            ]
+                        , Attr.src image
+                        , Attr.alt ""
+                        ]
+                        []
+                    ]
                 ]
             ]
         ]
