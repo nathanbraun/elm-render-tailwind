@@ -162,6 +162,10 @@ engine =
                 (\children model ->
                     buyFootball
                 )
+            , Markdown.Html.tag "sdk"
+                (\children model ->
+                    sdk
+                )
             , Markdown.Html.tag "praise"
                 (\quote name org logo headshot children model ->
                     praise quote name org logo headshot
@@ -1363,7 +1367,18 @@ buyFootball =
                                         , Tw.text_gray_500
                                         ]
                                     ]
-                                    [ text "The book, files and flashcards, plus the 2021 developer kit. Includes API and Fantasy Math web access for the 2021 season." ]
+                                    [ text "The book, files and flashcards, plus the "
+                                    , a
+                                        [ Attr.href "#kit"
+                                        , css
+                                            [ Tw.text_blue_600
+                                            , Tw.underline
+                                            , Tw.font_semibold
+                                            ]
+                                        ]
+                                        [ text "2021 developer kit" ]
+                                    , text ". Includes API and Fantasy Math web access for the 2021 season."
+                                    ]
                                 ]
                             , div
                                 [ css
@@ -1695,11 +1710,12 @@ buyFootball =
                                         , Tw.font_semibold
                                         , Tw.tracking_wide
                                         , Tw.uppercase
-                                        , Tw.bg_white
-                                        , Tw.text_gray_800
+                                        , Tw.bg_indigo_100
+                                        , Tw.text_indigo_600
                                         ]
+                                    , Attr.id "tier-standard"
                                     ]
-                                    [ text "Api Access Only" ]
+                                    [ text "2021 Developer Kit Only" ]
                                 ]
                             , div
                                 [ css
@@ -1708,7 +1724,7 @@ buyFootball =
                                     , Tw.text_gray_600
                                     ]
                                 ]
-                                [ text "Already own Learn to Code with Fantasy Football and just need API access for 2021? Get it now for "
+                                [ text "Already own Learn to Code with Fantasy Football and just need the developer kit + API access for 2021? Get it now for "
                                 , span
                                     [ css
                                         [ Tw.font_semibold
@@ -2297,5 +2313,390 @@ emailAndBuy group id url model =
                     ]
                 ]
                 [ text "30 day money back guarantee!" ]
+            ]
+        ]
+
+
+sdk : Html.Html Msg
+sdk =
+    div
+        [ css
+            [ Tw.w_screen
+            , Tw.min_h_screen
+            , Tw.pb_24
+            ]
+        ]
+        [ a [ Attr.id "kit" ] []
+        , div
+            [ css
+                [ Tw.relative
+                , Tw.pt_24
+                ]
+            ]
+            [ h2
+                [ css
+                    [ Bp.md
+                        [ Tw.text_5xl
+                        , Tw.tracking_tight
+                        , Tw.max_w_3xl
+                        ]
+                    , Tw.max_w_sm
+                    , Tw.text_4xl
+                    , Tw.text_center
+                    , Tw.mx_auto
+                    , Tw.leading_8
+                    , Tw.font_extrabold
+                    , Tw.text_gray_900
+                    ]
+                ]
+                [ text "2021 Fantasy Football Developer Kit" ]
+            , p
+                [ css
+                    [ Bp.md [ Tw.text_2xl, Tw.max_w_3xl ]
+                    , Tw.max_w_sm
+                    , Tw.mt_4
+                    , Tw.text_lg
+                    , Tw.mx_auto
+                    , Tw.text_center
+                    , Tw.text_gray_500
+                    ]
+                ]
+                [ text "A project based guide to help you "
+                , span [ css [ Tw.underline ] ]
+                    [ text "get better at Python "
+                    , span [ css [ Tw.italic ] ] [ text "and" ]
+                    , text " fantasy football."
+                    ]
+                , text " Analyze your team using state of the art tools that "
+                , span [ css [ Tw.italic ] ] [ text "you" ]
+                , text " build."
+                ]
+            , h3
+                [ css
+                    [ Bp.md
+                        [ Tw.text_4xl
+                        , Tw.tracking_tight
+                        , Tw.max_w_3xl
+                        ]
+                    , Tw.max_w_sm
+                    , Tw.text_4xl
+                    , Tw.text_center
+                    , Tw.mx_auto
+                    , Tw.leading_8
+                    , Tw.font_extrabold
+                    , Tw.text_gray_900
+                    , Tw.mt_8
+                    , Tw.mb_6
+                    ]
+                ]
+                [ text "What We'll Make" ]
+            ]
+        , div
+            [ css
+                [ Tw.flex
+                , Tw.items_center
+                , Tw.justify_center
+                ]
+            ]
+            [ div
+                [ css
+                    [ Tw.grid
+                    , Tw.max_w_4xl
+                    , Bp.md
+                        [ Tw.grid_cols_2
+                        , Tw.gap_x_4
+                        , Tw.gap_y_0
+                        , Tw.my_6
+                        ]
+                    , Tw.mt_8
+                    , Tw.px_4
+                    , Tw.grid_cols_1
+                    , Tw.gap_y_4
+                    , Tw.items_center
+                    ]
+                ]
+                [ img
+                    [ css
+                        [ Tw.object_scale_down
+                        , Bp.md [ Tw.max_w_sm ]
+                        , Tw.max_w_xs
+                        ]
+                    , Attr.src "images/team_zoom.jpg"
+                    , Attr.alt "team"
+                    ]
+                    []
+                , img
+                    [ css
+                        [ Tw.object_scale_down
+                        , Bp.md [ Tw.max_w_sm ]
+                        , Tw.max_w_xs
+                        ]
+                    , Attr.src "images/matchup_text.jpg"
+                    , Attr.alt "results"
+                    ]
+                    []
+                , img
+                    [ css
+                        [ Tw.object_scale_down
+                        , Bp.md [ Tw.max_w_sm ]
+                        , Tw.max_w_xs
+                        ]
+                    , Attr.src "images/pairplot.jpg"
+                    , Attr.alt "results"
+                    ]
+                    []
+                , img
+                    [ css
+                        [ Tw.object_scale_down
+                        , Bp.md [ Tw.max_w_sm ]
+                        , Tw.max_w_xs
+                        ]
+                    , Attr.src "images/rb_bb.jpg"
+                    , Attr.alt "results"
+                    ]
+                    []
+                ]
+            ]
+        , h3
+            [ css
+                [ Bp.md
+                    [ Tw.text_4xl
+                    , Tw.tracking_tight
+                    , Tw.max_w_3xl
+                    ]
+                , Tw.max_w_sm
+                , Tw.text_4xl
+                , Tw.text_center
+                , Tw.mx_auto
+                , Tw.leading_8
+                , Tw.font_extrabold
+                , Tw.text_gray_900
+                , Tw.mt_8
+                ]
+            ]
+            [ text "2021 Projects" ]
+        , h3
+            [ css
+                [ Bp.md
+                    [ Tw.text_3xl
+                    , Tw.tracking_tight
+                    , Tw.max_w_3xl
+                    ]
+                , Tw.max_w_sm
+                , Tw.text_2xl
+                , Tw.text_center
+                , Tw.mx_auto
+                , Tw.leading_8
+                , Tw.font_extrabold
+                , Tw.text_gray_900
+                , Tw.mt_8
+                , Tw.mb_4
+                , Tw.text_gray_700
+                ]
+            ]
+            [ text "Automatic Team & League Import - NEW" ]
+        , div
+            [ css
+                [ Tw.flex
+                , Tw.flex_col
+                , Tw.items_center
+                , Tw.justify_center
+                , Tw.space_y_3
+                ]
+            ]
+            [ p
+                [ css
+                    [ Bp.md [ Tw.mx_0 ]
+                    , Tw.mx_4
+                    , Tw.my_0
+                    , Tw.max_w_3xl
+                    ]
+                ]
+                [ text "We'll write code to pull down player and matchup info from your ESPN, Yahoo, Fleaflicker or Sleeper leagues, learning more about real life APIs, authentication and more along the way."
+                ]
+            , p
+                [ css
+                    [ Bp.md [ Tw.mx_0 ]
+                    , Tw.mx_4
+                    , Tw.my_0
+                    , Tw.max_w_3xl
+                    ]
+                ]
+                [ text "After that, we'll connect this project to the league analyzer and who do I start calculator projects below for instant analysis."
+                ]
+            ]
+        , h3
+            [ css
+                [ Bp.md
+                    [ Tw.text_3xl
+                    , Tw.tracking_tight
+                    , Tw.max_w_3xl
+                    ]
+                , Tw.max_w_sm
+                , Tw.text_2xl
+                , Tw.text_center
+                , Tw.mx_auto
+                , Tw.leading_8
+                , Tw.font_extrabold
+                , Tw.text_gray_900
+                , Tw.mt_8
+                , Tw.mb_4
+                , Tw.text_gray_700
+                ]
+            ]
+            [ text "Who Do I Start Calculator" ]
+        , div
+            [ css
+                [ Tw.flex
+                , Tw.flex_col
+                , Tw.items_center
+                , Tw.justify_center
+                , Tw.space_y_3
+                ]
+            ]
+            [ p
+                [ css
+                    [ Bp.md [ Tw.mx_0 ]
+                    , Tw.mx_4
+                    , Tw.my_0
+                    , Tw.max_w_3xl
+                    ]
+                ]
+                [ text "We'll build a tool that takes in you and your opponents lineup, a list of guys you're thinking about starting and returns the probability of winning with each one."
+                ]
+            , p
+                [ css
+                    [ Bp.md [ Tw.mx_0 ]
+                    , Tw.mx_4
+                    , Tw.my_0
+                    , Tw.max_w_3xl
+                    ]
+                ]
+                [ text "Access to the 2021 API means you'll be able to use it to help your team this year. And the same, best-in-class simulations Fantasy Math uses means you'll be able to take into account variance and real life correlations among players to start the guy who maximizes your probability of winning."
+                ]
+            ]
+        , h3
+            [ css
+                [ Bp.md
+                    [ Tw.text_3xl
+                    , Tw.tracking_tight
+                    , Tw.max_w_3xl
+                    ]
+                , Tw.max_w_sm
+                , Tw.text_2xl
+                , Tw.text_center
+                , Tw.mx_auto
+                , Tw.leading_8
+                , Tw.font_extrabold
+                , Tw.text_gray_900
+                , Tw.mt_8
+                , Tw.mb_4
+                , Tw.text_gray_700
+                ]
+            ]
+            [ text "League Analyzer" ]
+        , div
+            [ css
+                [ Tw.flex
+                , Tw.flex_col
+                , Tw.items_center
+                , Tw.justify_center
+                , Tw.space_y_3
+                ]
+            ]
+            [ p
+                [ css
+                    [ Bp.md [ Tw.mx_0 ]
+                    , Tw.mx_4
+                    , Tw.my_0
+                    , Tw.max_w_3xl
+                    ]
+                ]
+                [ text "We'll build a league analysis tool to get get projections, betting lines, over-under and probability each team gets the high or low. Whether you share the results with your league or keep the intel to yourself is up to you."
+                ]
+            ]
+        , h3
+            [ css
+                [ Bp.md
+                    [ Tw.text_3xl
+                    , Tw.tracking_tight
+                    , Tw.max_w_3xl
+                    , Tw.text_gray_700
+                    ]
+                , Tw.max_w_sm
+                , Tw.text_2xl
+                , Tw.text_center
+                , Tw.mx_auto
+                , Tw.leading_8
+                , Tw.font_extrabold
+                , Tw.text_gray_900
+                , Tw.mt_8
+                , Tw.mb_4
+                ]
+            ]
+            [ text "Best Ball Projector" ]
+        , div
+            [ css
+                [ Tw.flex
+                , Tw.flex_col
+                , Tw.items_center
+                , Tw.justify_center
+                , Tw.space_y_3
+                ]
+            ]
+            [ p
+                [ css
+                    [ Bp.md [ Tw.mx_0 ]
+                    , Tw.mx_4
+                    , Tw.my_0
+                    , Tw.max_w_3xl
+                    ]
+                ]
+                [ text "Enter in different best ball lineups and get back projected scores, utilization percentages and more. Traditionally, projecting best ball lineups has been difficult/impossible to do with any real accuracy, but working with simulated point projections makes it easy. Plus we'll learn a lot in in the process."
+                ]
+            ]
+        , div
+            [ css
+                [ Tw.px_2
+                , Tw.flex
+                , Tw.items_center
+                , Tw.justify_center
+                , Tw.flex_wrap
+                , Bp.md [ Tw.space_x_1 ]
+                , Tw.mt_16
+                , Tw.h_full
+                ]
+            ]
+            [ a
+                [ Attr.href "#buy"
+                , css
+                    [ Tw.w_full
+                    , Tw.mt_3
+                    , Tw.no_underline
+                    , Tw.text_center
+                    , Bp.md [ Tw.mt_0 ]
+                    , Tw.px_4
+                    , Tw.py_3
+                    , Tw.text_base
+                    , Tw.font_medium
+                    , Tw.rounded_md
+                    , Tw.bg_blue_500
+                    , Tw.text_xl
+                    , Tw.w_64
+                    , Tw.text_white
+                    , Css.focus
+                        [ Tw.outline_none
+                        , Tw.ring_2
+                        , Tw.ring_offset_2
+                        , Tw.ring_blue_400
+                        ]
+                    , Css.hover
+                        [ Tw.bg_blue_600
+                        ]
+                    ]
+                , onClick (OpenCheckout "buy")
+                ]
+                [ text "Buy 2021 developer kit!"
+                ]
             ]
         ]
