@@ -121,8 +121,9 @@ engine =
                             , Tw.my_4
                             ]
                         ]
-                        [ button
-                            [ css
+                        [ a
+                            [ Attr.href "#more"
+                            , css
                                 [ Tw.w_full
                                 , Tw.mt_3
                                 , Tw.no_underline
@@ -147,14 +148,8 @@ engine =
                                     [ Tw.bg_green_900
                                     ]
                                 ]
-                            , onClick ToggleExtra
                             ]
-                            [ case model.extraTestimonials of
-                                False ->
-                                    text "See more 👇"
-
-                                True ->
-                                    text "See less 👍"
+                            [ text "See more 👇"
                             ]
                         ]
                 )
@@ -547,7 +542,7 @@ engine =
                 |> Markdown.Html.withAttribute "h"
                 |> Markdown.Html.withOptionalAttribute "left"
             , Markdown.Html.tag "quote-grid"
-                (\children model ->
+                (\id children model ->
                     div
                         [ css
                             [ Tw.w_screen
@@ -556,7 +551,8 @@ engine =
                             , Tw.justify_center
                             ]
                         ]
-                        [ div
+                        [ a [ Attr.id (id |> Maybe.withDefault "") ] []
+                        , div
                             [ css
                                 [ Tw.grid
                                 , Bp.md
@@ -574,6 +570,7 @@ engine =
                             (renderAll model children)
                         ]
                 )
+                |> Markdown.Html.withOptionalAttribute "id"
             , Markdown.Html.tag "grid"
                 (\children model ->
                     div
@@ -604,7 +601,7 @@ engine =
                         ]
                 )
             , Markdown.Html.tag "image"
-                (\src desc size children model ->
+                (\src desc size id children model ->
                     let
                         size_ =
                             case size of
@@ -626,22 +623,26 @@ engine =
                                 _ ->
                                     Tw.max_w_xs
                     in
-                    img
-                        [ css
-                            [ Tw.object_scale_down
-                            , size_
-                            , Tw.mx_auto
-                            , Tw.my_4
+                    div []
+                        [ a [ Attr.id (id |> Maybe.withDefault "") ] []
+                        , img
+                            [ css
+                                [ Tw.object_scale_down
+                                , size_
+                                , Tw.mx_auto
+                                , Tw.my_4
+                                ]
+                            , Attr.src
+                                src
+                            , Attr.alt desc
                             ]
-                        , Attr.src
-                            src
-                        , Attr.alt desc
+                            []
                         ]
-                        []
                 )
                 |> Markdown.Html.withAttribute "src"
                 |> Markdown.Html.withAttribute "desc"
                 |> Markdown.Html.withOptionalAttribute "size"
+                |> Markdown.Html.withOptionalAttribute "id"
             ]
     , text = \children _ -> text children
     , codeSpan = \_ _ -> div [] []
