@@ -1102,7 +1102,17 @@ buyFootball =
                                         , Tw.font_extrabold
                                         ]
                                     ]
-                                    [ text "$59"
+                                    [ span
+                                        [ css
+                                            [ Tw.line_through
+                                            , Tw.mr_3
+                                            , Tw.my_auto
+                                            , Tw.font_semibold
+                                            , Tw.text_gray_400
+                                            ]
+                                        ]
+                                        [ text "$59" ]
+                                    , span [ css [ Tw.text_red_400 ] ] [ text "$44" ]
                                     , span
                                         [ css
                                             [ Tw.ml_3
@@ -1372,7 +1382,17 @@ buyFootball =
                                             ]
                                         ]
                                         [ text "$169" ]
-                                    , text "$99"
+                                    , span
+                                        [ css
+                                            [ Tw.line_through
+                                            , Tw.mr_3
+                                            , Tw.my_auto
+                                            , Tw.font_semibold
+                                            , Tw.text_gray_400
+                                            ]
+                                        ]
+                                        [ text "$99" ]
+                                    , span [ css [ Tw.text_red_400 ] ] [ text "$74" ]
                                     , span
                                         [ css
                                             [ Tw.ml_3
