@@ -978,6 +978,22 @@ buyFootball =
                             ]
                         ]
                         [ text "Buy with the 2021 Fantasy Football Developer Kit and save." ]
+                    , p
+                        [ css
+                            [ Tw.text_3xl
+                            , Tw.font_extrabold
+                            , Tw.text_white
+                            , Tw.pt_6
+                            , Tw.text_red_400
+                            , Bp.lg
+                                [ Tw.text_5xl
+                                ]
+                            , Bp.sm
+                                [ Tw.text_4xl
+                                ]
+                            ]
+                        ]
+                        [ text "Black Friday Sale - 25% Off" ]
                     ]
                 ]
             ]
