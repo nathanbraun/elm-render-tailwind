@@ -2874,7 +2874,7 @@ buyBaseball url =
                                 ]
                             ]
                         ]
-                        [ text "Black Friday Sale - 25% Off" ]
+                        [ text "Black Friday - 25% Off" ]
                     ]
                 ]
             ]
@@ -3462,8 +3462,11 @@ baseballTop image children model =
                         , Tw.justify_center
                         , Tw.flex_wrap
                         , Tw.text_3xl
-                        , Bp.md [ Tw.space_x_1 ]
-                        , Tw.my_0
+                        , Tw.mb_4
+                        , Bp.md
+                            [ Tw.space_x_1
+                            , Tw.my_0
+                            ]
                         ]
                     ]
                     [ a
@@ -3481,7 +3484,8 @@ baseballTop image children model =
                         [ text " — " ]
                     , span
                         [ css
-                            [ Tw.inline_flex
+                            [ Tw.hidden
+                            , Bp.md [ Tw.inline_flex ]
                             , Tw.text_gray_700
 
                             -- , Tw.font_semibold
