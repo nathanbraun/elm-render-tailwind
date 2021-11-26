@@ -2859,6 +2859,22 @@ buyBaseball url =
                             ]
                         ]
                         [ text "Get Learn to Code with Baseball" ]
+                    , p
+                        [ css
+                            [ Tw.text_3xl
+                            , Tw.font_extrabold
+                            , Tw.text_white
+                            , Tw.pt_6
+                            , Tw.text_red_400
+                            , Bp.lg
+                                [ Tw.text_5xl
+                                ]
+                            , Bp.sm
+                                [ Tw.text_4xl
+                                ]
+                            ]
+                        ]
+                        [ text "Black Friday Sale - 25% Off" ]
                     ]
                 ]
             ]
@@ -2944,7 +2960,17 @@ buyBaseball url =
                                         , Tw.font_extrabold
                                         ]
                                     ]
-                                    [ text "$59"
+                                    [ span
+                                        [ css
+                                            [ Tw.line_through
+                                            , Tw.mr_3
+                                            , Tw.my_auto
+                                            , Tw.font_semibold
+                                            , Tw.text_gray_400
+                                            ]
+                                        ]
+                                        [ text "$59" ]
+                                    , span [ css [ Tw.text_red_500 ] ] [ text "$44" ]
                                     , span
                                         [ css
                                             [ Tw.ml_3
@@ -3409,6 +3435,60 @@ baseballTop image children model =
                         ]
                     ]
                     [ text "All applied to Baseball Statistics" ]
+                , p
+                    [ css
+                        [ Bp.md
+                            [ Tw.text_5xl
+                            , Tw.tracking_tight
+                            , Tw.max_w_3xl
+                            ]
+                        , Tw.max_w_sm
+                        , Tw.text_4xl
+                        , Tw.text_center
+                        , Tw.mx_auto
+                        , Tw.mt_10
+                        , Tw.mb_4
+                        , Tw.leading_8
+                        , Tw.font_extrabold
+                        , Tw.text_red_600
+                        ]
+                    ]
+                    [ text "Black Friday Sale - 25% Off" ]
+                , div
+                    [ css
+                        [ Tw.px_2
+                        , Tw.flex
+                        , Tw.items_center
+                        , Tw.justify_center
+                        , Tw.flex_wrap
+                        , Tw.text_3xl
+                        , Bp.md [ Tw.space_x_1 ]
+                        , Tw.my_0
+                        ]
+                    ]
+                    [ a
+                        [ Attr.href "buy"
+                        , css
+                            [ Tw.border_none
+                            , Tw.bg_white
+                            , Tw.text_blue_600
+                            , Tw.underline
+                            , Tw.font_semibold
+                            ]
+                        ]
+                        [ text "Buy Now" ]
+                    , span [ css [ Tw.hidden, Bp.md [ Tw.inline_flex ] ] ]
+                        [ text " — " ]
+                    , span
+                        [ css
+                            [ Tw.inline_flex
+                            , Tw.text_gray_700
+
+                            -- , Tw.font_semibold
+                            ]
+                        ]
+                        [ text "30 day money back guarantee!" ]
+                    ]
                 ]
             , div
                 [ css
