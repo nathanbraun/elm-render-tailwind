@@ -1,4 +1,4 @@
-module Buy exposing (buyBaseball, football, footballGift)
+module Buy exposing (baseball, baseballGift, football, footballGift)
 
 import AB exposing (Version(..))
 import Css
@@ -24,6 +24,13 @@ ltcwff =
         "https://transactions.sendowl.com/packages/801676/F59AC077/purchase"
 
 
+ltcwbb : Product
+ltcwbb =
+    Product
+        "https://transactions.sendowl.com/packages/801126/807C451F/purchase"
+        "https://transactions.sendowl.com/packages/801668/97270C6D/purchase"
+
+
 bundle : Product
 bundle =
     Product
@@ -43,6 +50,16 @@ footballGift =
     footballSale "Gift Learn to Code with Fantasy Football"
         "The perfect present for the aspiring programmer and fantasy football fan in your life!"
         True
+
+
+baseball : Html.Html Msg
+baseball =
+    baseballSale "Get Learn to Code with Baseball" False
+
+
+baseballGift : Html.Html Msg
+baseballGift =
+    baseballSale "Gift Learn to Code with Baseball" True
 
 
 footballSale : String -> String -> Bool -> Html.Html Msg
@@ -144,7 +161,7 @@ footballSale headline subHeader gift =
                                 , Tw.pt_6
                                 ]
                             ]
-                            [ text "Click the blue present icon on checkout after clicking Buy Now and you'll be able to enter reciept + timing details."
+                            [ text "Click the blue present icon on checkout after clicking Buy Now and you'll be able to enter reciept + e-delivery details."
                             , img
                                 [ css
                                     [ Tw.object_scale_down
@@ -167,7 +184,7 @@ footballSale headline subHeader gift =
                                 , Tw.mt_10
                                 ]
                             ]
-                            [ text "Looking to give LTCWFF as a gift? - "
+                            [ text "Looking to give LTCWBB as a gift? - "
                             , a
                                 [ Attr.href "gift"
                                 , css
@@ -1022,8 +1039,8 @@ footballSale headline subHeader gift =
         ]
 
 
-buyBaseball : String -> Html.Html Msg
-buyBaseball url =
+baseballSale : String -> Bool -> Html.Html Msg
+baseballSale headline gift =
     div
         [ css
             [ Tw.bg_blue_900
@@ -1080,7 +1097,7 @@ buyBaseball url =
                                 ]
                             ]
                         ]
-                        [ text "Get Learn to Code with Baseball" ]
+                        [ text headline ]
                     , p
                         [ css
                             [ Tw.text_3xl
@@ -1097,6 +1114,57 @@ buyBaseball url =
                             ]
                         ]
                         [ text "Black Friday - 25% Off" ]
+                    , if gift then
+                        div
+                            [ css
+                                [ Tw.text_2xl
+
+                                -- , Tw.font_extrabold
+                                , Tw.flex
+                                , Tw.flex_col
+                                , Tw.flex
+                                , Tw.items_center
+                                , Tw.justify_center
+                                , Tw.max_w_2xl
+                                , Tw.mx_auto
+                                , Tw.text_gray_200
+                                , Tw.pt_6
+                                ]
+                            ]
+                            [ text "Click the blue present icon on checkout after clicking Buy Now and you'll be able to enter reciept + e-delivery details."
+                            , img
+                                [ css
+                                    [ Tw.object_scale_down
+                                    , Tw.max_w_xs
+                                    , Tw.mx_auto
+                                    , Tw.p_6
+                                    ]
+                                , Attr.src
+                                    "images/gift.jpg"
+                                , Attr.alt ""
+                                ]
+                                []
+                            ]
+
+                      else
+                        p
+                            [ css
+                                [ Tw.text_xl
+                                , Tw.text_gray_100
+                                , Tw.mt_10
+                                ]
+                            ]
+                            [ text "Looking to give LTCWFF as a gift? - "
+                            , a
+                                [ Attr.href "gift"
+                                , css
+                                    [ Tw.text_blue_100
+                                    , Tw.underline
+                                    , Tw.font_semibold
+                                    ]
+                                ]
+                                [ text "click here!" ]
+                            ]
                     ]
                 ]
             ]
@@ -1446,7 +1514,13 @@ buyBaseball url =
                                         []
                                     ]
                                     [ a
-                                        [ Attr.href url
+                                        [ Attr.href
+                                            (if gift then
+                                                ltcwbb.link
+
+                                             else
+                                                ltcwbb.gift
+                                            )
                                         , css
                                             [ Tw.flex
                                             , Tw.items_center

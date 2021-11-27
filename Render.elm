@@ -3,7 +3,7 @@ module Render exposing (styledRenderer)
 -- import Html exposing (Html)
 
 import AB exposing (TestVersion, Version(..))
-import Buy exposing (buyBaseball)
+import Buy
 import Css
 import Element exposing (Element)
 import Element.Background
@@ -162,9 +162,13 @@ engine =
                 (\_ _ ->
                     Buy.footballGift
                 )
+            , Markdown.Html.tag "gift_baseball"
+                (\_ _ ->
+                    Buy.baseballGift
+                )
             , Markdown.Html.tag "buy_baseball"
                 (\url _ _ ->
-                    buyBaseball url
+                    Buy.baseball
                 )
                 |> Markdown.Html.withAttribute "url"
             , Markdown.Html.tag "sdk"
