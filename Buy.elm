@@ -184,7 +184,7 @@ footballSale headline subHeader gift =
                                 , Tw.mt_10
                                 ]
                             ]
-                            [ text "Looking to give LTCWBB as a gift? - "
+                            [ text "Looking to give LTCWFF as a gift? - "
                             , a
                                 [ Attr.href "gift"
                                 , css
@@ -1154,7 +1154,7 @@ baseballSale headline gift =
                                 , Tw.mt_10
                                 ]
                             ]
-                            [ text "Looking to give LTCWFF as a gift? - "
+                            [ text "Looking to give LTCWBB as a gift? - "
                             , a
                                 [ Attr.href "gift"
                                 , css
