@@ -1058,7 +1058,7 @@ footballTop image children model =
                         , Tw.text_red_600
                         ]
                     ]
-                    [ text "Black Friday Sale - 25% Off" ]
+                    [ text "Cyber Monday Sale - 25% Off" ]
                 , div
                     [ css
                         [ Tw.px_2
@@ -1994,7 +1994,7 @@ baseballTop image children model =
                         , Tw.text_red_600
                         ]
                     ]
-                    [ text "Black Friday Sale - 25% Off" ]
+                    [ text "Cyber Monday Sale - 25% Off" ]
                 , div
                     [ css
                         [ Tw.px_2

@@ -143,7 +143,7 @@ footballSale headline subHeader gift =
                                 ]
                             ]
                         ]
-                        [ text "Black Friday - 25% Off" ]
+                        [ text "Cyber Monday - 25% Off" ]
                     , if gift then
                         div
                             [ css
@@ -1113,7 +1113,7 @@ baseballSale headline gift =
                                 ]
                             ]
                         ]
-                        [ text "Black Friday - 25% Off" ]
+                        [ text "Cyber Monday - 25% Off" ]
                     , if gift then
                         div
                             [ css
