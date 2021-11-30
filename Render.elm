@@ -1040,64 +1040,6 @@ footballTop image children model =
                         ]
                     ]
                     [ text "All applied to Fantasy Football." ]
-                , p
-                    [ css
-                        [ Bp.md
-                            [ Tw.text_5xl
-                            , Tw.tracking_tight
-                            , Tw.max_w_3xl
-                            ]
-                        , Tw.max_w_sm
-                        , Tw.text_4xl
-                        , Tw.text_center
-                        , Tw.mx_auto
-                        , Tw.mt_10
-                        , Tw.mb_4
-                        , Tw.leading_8
-                        , Tw.font_extrabold
-                        , Tw.text_red_600
-                        ]
-                    ]
-                    [ text "Cyber Monday Sale - 25% Off" ]
-                , div
-                    [ css
-                        [ Tw.px_2
-                        , Tw.flex
-                        , Tw.items_center
-                        , Tw.justify_center
-                        , Tw.flex_wrap
-                        , Tw.text_3xl
-                        , Tw.mb_4
-                        , Bp.md
-                            [ Tw.space_x_1
-                            , Tw.my_0
-                            ]
-                        ]
-                    ]
-                    [ a
-                        [ Attr.href "buy"
-                        , css
-                            [ Tw.border_none
-                            , Tw.bg_white
-                            , Tw.text_blue_600
-                            , Tw.underline
-                            , Tw.font_semibold
-                            ]
-                        ]
-                        [ text "Buy Now" ]
-                    , span [ css [ Tw.hidden, Bp.md [ Tw.inline_flex ] ] ]
-                        [ text " — " ]
-                    , span
-                        [ css
-                            [ Tw.hidden
-                            , Bp.md [ Tw.inline_flex ]
-                            , Tw.text_gray_700
-
-                            -- , Tw.font_semibold
-                            ]
-                        ]
-                        [ text "30 day money back guarantee!" ]
-                    ]
                 ]
             , div
                 [ css
@@ -1976,64 +1918,6 @@ baseballTop image children model =
                         ]
                     ]
                     [ text "All applied to Baseball Statistics" ]
-                , p
-                    [ css
-                        [ Bp.md
-                            [ Tw.text_5xl
-                            , Tw.tracking_tight
-                            , Tw.max_w_3xl
-                            ]
-                        , Tw.max_w_sm
-                        , Tw.text_4xl
-                        , Tw.text_center
-                        , Tw.mx_auto
-                        , Tw.mt_10
-                        , Tw.mb_4
-                        , Tw.leading_8
-                        , Tw.font_extrabold
-                        , Tw.text_red_600
-                        ]
-                    ]
-                    [ text "Cyber Monday Sale - 25% Off" ]
-                , div
-                    [ css
-                        [ Tw.px_2
-                        , Tw.flex
-                        , Tw.items_center
-                        , Tw.justify_center
-                        , Tw.flex_wrap
-                        , Tw.text_3xl
-                        , Tw.mb_4
-                        , Bp.md
-                            [ Tw.space_x_1
-                            , Tw.my_0
-                            ]
-                        ]
-                    ]
-                    [ a
-                        [ Attr.href "buy"
-                        , css
-                            [ Tw.border_none
-                            , Tw.bg_white
-                            , Tw.text_blue_600
-                            , Tw.underline
-                            , Tw.font_semibold
-                            ]
-                        ]
-                        [ text "Buy Now" ]
-                    , span [ css [ Tw.hidden, Bp.md [ Tw.inline_flex ] ] ]
-                        [ text " — " ]
-                    , span
-                        [ css
-                            [ Tw.hidden
-                            , Bp.md [ Tw.inline_flex ]
-                            , Tw.text_gray_700
-
-                            -- , Tw.font_semibold
-                            ]
-                        ]
-                        [ text "30 day money back guarantee!" ]
-                    ]
                 ]
             , div
                 [ css

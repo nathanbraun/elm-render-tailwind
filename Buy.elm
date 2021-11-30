@@ -128,22 +128,6 @@ footballSale headline subHeader gift =
                             ]
                         ]
                         [ text subHeader ]
-                    , p
-                        [ css
-                            [ Tw.text_3xl
-                            , Tw.font_extrabold
-                            , Tw.text_white
-                            , Tw.pt_6
-                            , Tw.text_red_400
-                            , Bp.lg
-                                [ Tw.text_5xl
-                                ]
-                            , Bp.sm
-                                [ Tw.text_4xl
-                                ]
-                            ]
-                        ]
-                        [ text "Cyber Monday - 25% Off" ]
                     , if gift then
                         div
                             [ css
@@ -305,15 +289,14 @@ footballSale headline subHeader gift =
                                     ]
                                     [ span
                                         [ css
-                                            [ Tw.line_through
-                                            , Tw.mr_3
+                                            [ Tw.mr_3
                                             , Tw.my_auto
                                             , Tw.font_semibold
-                                            , Tw.text_gray_400
+
+                                            -- , Tw.text_gray_400
                                             ]
                                         ]
                                         [ text "$59" ]
-                                    , span [ css [ Tw.text_red_500 ] ] [ text "$44" ]
                                     , span
                                         [ css
                                             [ Tw.ml_3
@@ -549,15 +532,14 @@ footballSale headline subHeader gift =
                                         [ text "$169" ]
                                     , span
                                         [ css
-                                            [ Tw.line_through
-                                            , Tw.mr_3
+                                            [ Tw.mr_3
                                             , Tw.my_auto
                                             , Tw.font_semibold
-                                            , Tw.text_gray_400
+
+                                            -- , Tw.text_gray_400
                                             ]
                                         ]
                                         [ text "$99" ]
-                                    , span [ css [ Tw.text_red_500 ] ] [ text "$74" ]
                                     , span
                                         [ css
                                             [ Tw.ml_3
@@ -1098,22 +1080,6 @@ baseballSale headline gift =
                             ]
                         ]
                         [ text headline ]
-                    , p
-                        [ css
-                            [ Tw.text_3xl
-                            , Tw.font_extrabold
-                            , Tw.text_white
-                            , Tw.pt_6
-                            , Tw.text_red_400
-                            , Bp.lg
-                                [ Tw.text_5xl
-                                ]
-                            , Bp.sm
-                                [ Tw.text_4xl
-                                ]
-                            ]
-                        ]
-                        [ text "Cyber Monday - 25% Off" ]
                     , if gift then
                         div
                             [ css
@@ -1252,15 +1218,14 @@ baseballSale headline gift =
                                     ]
                                     [ span
                                         [ css
-                                            [ Tw.line_through
-                                            , Tw.mr_3
+                                            [ Tw.mr_3
                                             , Tw.my_auto
                                             , Tw.font_semibold
-                                            , Tw.text_gray_400
+
+                                            -- , Tw.text_gray_400
                                             ]
                                         ]
                                         [ text "$59" ]
-                                    , span [ css [ Tw.text_red_500 ] ] [ text "$44" ]
                                     , span
                                         [ css
                                             [ Tw.ml_3
