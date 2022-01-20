@@ -34,14 +34,14 @@ ltcwbb =
 bundle : Product
 bundle =
     Product
-        "https://transactions.sendowl.com/packages/814622/8C195419/purchase"
-        "https://transactions.sendowl.com/packages/823649/1C78A960/purchase"
+        "https://transactions.sendowl.com/packages/825607/ECA74787/purchase"
+        "https://transactions.sendowl.com/packages/825608/E62168F5/purchase"
 
 
 football : Html.Html Msg
 football =
     footballSale "Get Learn to Code with Fantasy Football"
-        "Buy with the 2021 Fantasy Football Developer Kit and save."
+        "Buy with the 2022 Fantasy Football Developer Kit and save."
         False
 
 
@@ -508,7 +508,7 @@ footballSale headline subHeader gift =
                                             ]
                                         , Attr.id "tier-standard"
                                         ]
-                                        [ text "Book + 2021 Developer Kit" ]
+                                        [ text "Book + 2022 Developer Kit" ]
                                     ]
                                 , div
                                     [ css
@@ -567,8 +567,8 @@ footballSale headline subHeader gift =
                                             , Tw.font_semibold
                                             ]
                                         ]
-                                        [ text "2021 developer kit" ]
-                                    , text ". Includes API and Fantasy Math web access for the 2021 season."
+                                        [ text "2022 developer kit" ]
+                                    , text ". Includes API and Fantasy Math web access for the 2022 season."
                                     ]
                                 ]
                             , div
@@ -714,7 +714,7 @@ footballSale headline subHeader gift =
                                                 , Tw.text_gray_700
                                                 ]
                                             ]
-                                            [ text "Four step-by-step project guides + final code" ]
+                                            [ text "Five step-by-step project guides + final code (250+ pages)" ]
                                         ]
                                     , li
                                         [ css
@@ -755,7 +755,7 @@ footballSale headline subHeader gift =
                                                 , Tw.text_gray_700
                                                 ]
                                             ]
-                                            [ text "2021 Fantasy Math Simulation API Access" ]
+                                            [ text "2022 Fantasy Math Simulation API Access" ]
                                         ]
                                     , li
                                         [ css
@@ -796,7 +796,7 @@ footballSale headline subHeader gift =
                                                 , Tw.text_gray_700
                                                 ]
                                             ]
-                                            [ text "2021 Fantasy Math Web Access" ]
+                                            [ text "2022 Fantasy Math Web Access" ]
                                         ]
                                     ]
                                 , div
@@ -912,7 +912,7 @@ footballSale headline subHeader gift =
                                         ]
                                     , Attr.id "tier-standard"
                                     ]
-                                    [ text "2021 Developer Kit Only" ]
+                                    [ text "2022 Developer Kit Only" ]
                                 ]
                             , div
                                 [ css
@@ -921,14 +921,14 @@ footballSale headline subHeader gift =
                                     , Tw.text_gray_600
                                     ]
                                 ]
-                                [ text "Already own Learn to Code with Fantasy Football and just need the developer kit + API access for 2021? Get it now for "
+                                [ text "Already own Learn to Code with Fantasy Football and just need the developer kit + API access for 2022? Get it now for "
                                 , span
                                     [ css
                                         [ Tw.font_semibold
                                         , Tw.text_gray_900
                                         ]
                                     ]
-                                    [ text "$59" ]
+                                    [ text "$69" ]
                                 , text "."
                                 ]
                             ]
@@ -945,7 +945,7 @@ footballSale headline subHeader gift =
                                 ]
                             ]
                             [ a
-                                [ Attr.href "https://transactions.sendowl.com/products/78541690/EE5C0FB5/purchase"
+                                [ Attr.href "https://transactions.sendowl.com/products/78652896/D9584EF4/purchase"
                                 , css
                                     [ Tw.flex
                                     , Tw.items_center
@@ -964,7 +964,7 @@ footballSale headline subHeader gift =
                                         ]
                                     ]
                                 ]
-                                [ text "Buy 2021 Developer Kit" ]
+                                [ text "Buy 2022 Developer Kit" ]
                             ]
                         ]
                     ]

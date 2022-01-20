@@ -1446,7 +1446,7 @@ sdk =
                     , Tw.text_gray_900
                     ]
                 ]
-                [ text "2021 Fantasy Football Developer Kit" ]
+                [ text "2022 Fantasy Football Developer Kit" ]
             , p
                 [ css
                     [ Bp.md [ Tw.text_2xl, Tw.max_w_3xl ]
@@ -1669,7 +1669,7 @@ sdk =
                     , Tw.max_w_3xl
                     ]
                 ]
-                [ text "Access to the 2021 API means you'll be able to use it to help your team this year. And the same, best-in-class simulations Fantasy Math uses means you'll be able to take into account variance and real life correlations among players to start the guy who maximizes your probability of winning."
+                [ text "Access to the 2022 API means you'll be able to use it to help your team this year. And the same, best-in-class simulations Fantasy Math uses means you'll be able to take into account variance and real life correlations among players to start the guy who maximizes your probability of winning."
                 ]
             ]
         , h3
@@ -1793,7 +1793,7 @@ sdk =
                     ]
                 , onClick (OpenCheckout "buy")
                 ]
-                [ text "Buy 2021 developer kit!"
+                [ text "Buy 2022 developer kit!"
                 ]
             ]
         ]
